@@ -144,16 +144,16 @@ Structure:
   align-items: center;
   gap: 12px;
   padding: 8px 12px;
-  background: linear-gradient(135deg, #f0f7ff 0%, #f8fbff 100%);
+  background: #262641;
   border-radius: 8px;
-  border: 2px solid #e8f4f8;
-  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.1);
+  border: 2px solid #00d4ff;
+  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.2);
   transition: all 0.3s ease;
 }
 
 .headerInfo:hover {
   border-color: #00d4ff;
-  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
 }
 
 .headerAvatar {
@@ -171,7 +171,7 @@ Structure:
   margin: 0;
   font-size: 14px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: white;
 }
 
 .headerEmail {
@@ -184,9 +184,9 @@ Structure:
 /* ===== HEADER BUTTON: Logout Button ===== */
 .headerButton {
   padding: 10px 24px;
-  background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
-  color: white;
-  border: 2px solid #0066ff;
+  background: #00d4ff;
+  color: #1a1a2e;
+  border: 2px solid #00d4ff;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
@@ -195,7 +195,7 @@ Structure:
   white-space: nowrap;
   flex-shrink: 0;
   min-width: fit-content;
-  box-shadow: 0 4px 8px rgba(0, 102, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 212, 255, 0.3);
 }
 
 .headerButton:hover {
