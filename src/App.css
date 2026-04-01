@@ -1,184 +1,372 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* 
+===========================================
+APP/DASHBOARD COMPONENT STYLES - BEM CONVENTION
+===========================================
+BEM Structure:
+  Block: .app, .dashboard, .welcome, .stats, .action, .activity
+  Elements: .__container, .__grid, .__card, etc.
+  Modifiers: --primary, --secondary, etc.
+Why BEM? Industry standard, scalable, maintainable
+*/
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+/* ===== APP BLOCK: Main Application Wrapper ===== */
+.app {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  font-family: var(--sans);
 }
 
-#next-steps {
+/* ===== DASHBOARD LAYOUT: Main Layout ===== */
+.dashboardLayout {
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+/* ===== DASHBOARD CONTENT: Main Content Area ===== */
+.dashboardContent {
+  flex: 1;
+  padding: 30px 20px;
+  background: var(--bg);
+  width: calc(100% - 280px); /* Account for sidebar width */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin-left: 280px; /* Space for sidebar */
+  margin-top: 80px; /* Space for header */
+  transition: all 0.3s ease;
 }
 
-#next-steps ul {
+/* Adjust content when sidebar is collapsed */
+.dashboardLayout:has(.sidebarCollapsed) .dashboardContent {
+  margin-left: 80px;
+  width: calc(100% - 80px);
+}
+
+/* ===== DASHBOARD CONTAINER: Full-width Container ===== */
+.dashboardContainer {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+/* ===============================================
+   WELCOME SECTION - Main Welcome Area
+   =============================================== */
+
+.welcomeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.welcomeTitle {
+  margin: 0;
+  color: var(--text-h);
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.welcomeMessage {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* ===============================================
+   STATS GRID - Dashboard Cards Section
+   =============================================== */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===== STATS CARD: Individual Card ===== */
+.statsCard {
+  /* background: white; */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* min-height: 150px; */
+}
+
+.statsCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(170, 59, 255, 0.15);
+  border-color: var(--accent);
+}
+
+.statsIcon {
+  font-size: 32px;
+}
+
+.statsCard h3 {
+  margin: 0;
+  color: var(--text-h);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.statsCard p {
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ===============================================
+   QUICK ACTIONS SECTION
+   =============================================== */
+
+.actionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.actionTitle {
+  margin: 0;
+  color: var(--text-h);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ===== ACTION BUTTONS: Container ===== */
+.actionButtons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===== ACTION BUTTON: Individual Button ===== */
+.actionButton {
+  padding: 14px 20px;
+  background: linear-gradient(135deg, var(--accent) 0%, #8a1fcc 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.actionButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(170, 59, 255, 0.4);
+}
+
+.actionButton:active {
+  transform: translateY(0);
+}
+
+/* Modifier: Secondary Button */
+.actionButtonSecondary {
+  background: white;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.actionButtonSecondary:hover {
+  background: var(--accent-bg);
+}
+
+/* ===============================================
+   RECENT ACTIVITY SECTION
+   =============================================== */
+
+.activitySection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.activityTitle {
+  margin: 0;
+  color: var(--text-h);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ===== ACTIVITY LIST: List Container ===== */
+.activityList {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
+  flex-direction: column;
   gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
   width: 100%;
+  box-sizing: border-box;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+.activityList li {
+  margin: 0;
+  padding: 8px 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border);
+}
+
+.activityList li:last-child {
+  border-bottom: none;
+}
+
+/* ===============================================
+   RESPONSIVE DESIGN - Media Queries
+   =============================================== */
+
+@media (max-width: 1024px) {
+  .dashboardContent {
+    padding: 20px 12px;
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  .welcomeTitle {
+    font-size: 28px;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+
+  .statsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .actionButtons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardContent {
+    padding: 20px 12px;
+  }
+
+  .welcomeTitle {
+    font-size: 24px;
+  }
+
+  .welcomeMessage {
+    font-size: 14px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .statsCard {
+    padding: 16px;
+  }
+
+  .statsIcon {
+    font-size: 28px;
+  }
+
+  .statsCard h3 {
+    font-size: 16px;
+  }
+
+  .actionButtons {
+    grid-template-columns: 1fr;
+  }
+
+  .actionButton {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .activityList {
+    padding: 16px;
+  }
+
+  .activityList li {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard__content {
+    padding: 16px 8px;
+  }
+
+  .welcome__section {
+    gap: 24px;
+  }
+
+  .welcome__title {
+    font-size: 20px;
+  }
+
+  .welcome__message {
+    font-size: 13px;
+  }
+
+  .stats__grid {
+    gap: 8px;
+  }
+
+  .stats__card {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .stats__icon {
+    font-size: 24px;
+  }
+
+  .stats__card h3 {
+    font-size: 14px;
+  }
+
+  .stats__card p {
+    font-size: 12px;
+  }
+
+  .action__title,
+  .activity__title {
+    font-size: 16px;
+  }
+
+  .action__buttons {
+    gap: 8px;
+  }
+
+  .action__button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .activity__list {
+    padding: 12px;
+  }
+
+  .activity__list li {
+    font-size: 12px;
+    padding: 6px 0;
   }
 }

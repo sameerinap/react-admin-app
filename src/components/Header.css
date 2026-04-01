@@ -1,0 +1,248 @@
+/* 
+===========================================
+HEADER COMPONENT STYLES - camelCase CONVENTION
+===========================================
+Structure:
+  Block: .header
+  Elements: .headerContainer, .headerBrand, .headerUser, etc.
+  Modifiers: --open, --closed
+*/
+
+/* ===== HEADER BLOCK: Main Header ===== */
+.header {
+  background: #1a1a2e;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid #00d4ff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  width: 100%;
+  overflow: visible;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+/* ===== HEADER BRAND BOX: Logo/Title Section (Left aligned) ===== */
+.headerBrand {
+  background: #0f0f1e;
+  border-right: 2px solid #00d4ff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  box-shadow: 2px 0 8px rgba(0, 212, 255, 0.2);
+}
+
+.headerBrandOpen {
+  width: 240px;
+  margin-left: 0;
+}
+
+.headerBrandClosed {
+  width: 40px;
+  margin-left: 0;
+}
+
+/* ===== TOGGLE BUTTON: Collapse/Expand Sidebar ===== */
+.headerToggle {
+  background: #262641;
+  border: 2px solid #00d4ff;
+  color: #00d4ff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-right: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.2);
+}
+
+.headerToggle:hover {
+  background: #00d4ff;
+  color: #1a1a2e;
+  border-color: #00d4ff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
+}
+
+.headerToggle:active {
+  transform: scale(0.95);
+}
+
+/* ===== HEADER BRAND CONTENT: Hidden when collapsed ===== */
+.headerBrandContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.headerBrandClosed .headerBrandContent {
+  display: none;
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+}
+
+.headerSubtitle {
+  margin: 0;
+  font-size: 11px;
+  color: #00d4ff;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+/* ===== HEADER CONTAINER: Dynamic Width Container ===== */
+.headerContainer {
+  flex: 1;
+  max-width: none;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  overflow: visible;
+  transition: all 0.3s ease;
+}
+
+.headerContainerOpen {
+  margin-left: 0;
+}
+
+.headerContainerClosed {
+  margin-left: 0;
+}
+
+/* ===== HEADER USER: User Info + Button Container ===== */
+.headerUser {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+/* ===== HEADER INFO: User Profile Display ===== */
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #f0f7ff 0%, #f8fbff 100%);
+  border-radius: 8px;
+  border: 2px solid #e8f4f8;
+  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.headerInfo:hover {
+  border-color: #00d4ff;
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+}
+
+.headerAvatar {
+  font-size: 24px;
+}
+
+/* ===== HEADER DETAILS: User Name & Email ===== */
+.headerDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.headerName {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.headerEmail {
+  margin: 0;
+  font-size: 11px;
+  color: #00d4ff;
+  font-weight: 500;
+}
+
+/* ===== HEADER BUTTON: Logout Button ===== */
+.headerButton {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+  color: white;
+  border: 2px solid #0066ff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: fit-content;
+  box-shadow: 0 4px 8px rgba(0, 102, 255, 0.2);
+}
+
+.headerButton:hover {
+  background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+  border-color: #00d4ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 212, 255, 0.4);
+}
+
+.headerButton:active {
+  transform: translateY(0);
+}
+
+.headerButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.3);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .headerContainer {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .headerTitle {
+    font-size: 18px;
+  }
+
+  .headerInfo {
+    padding: 6px 10px;
+  }
+
+  .headerDetails {
+    display: none;
+  }
+
+  .headerButton {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerContainer {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+  }
+}

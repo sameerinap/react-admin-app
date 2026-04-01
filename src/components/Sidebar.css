@@ -1,0 +1,256 @@
+/* ================================================
+   SIDEBAR COMPONENT - BEM CSS STYLING
+   Block: sidebar
+   Elements: nav, menu, item, link, icon, label, footer, version
+   ================================================ */
+
+/* SIDEBAR MAIN CONTAINER */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 280px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-right: 2px solid #0f3460;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  padding-top: 80px; /* Space for header */
+}
+
+/* SIDEBAR NAVIGATION */
+.sidebarNav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 0;
+}
+
+/* SIDEBAR MENU LIST */
+.sidebarMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* SIDEBAR MENU ITEM */
+.sidebarItem {
+  margin: 0;
+  padding: 0;
+}
+
+/* SIDEBAR LINK (Button Style) */
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  color: #b0b0b0;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* SIDEBAR LINK HOVER STATE */
+.sidebarLink:hover {
+  background-color: rgba(63, 112, 180, 0.2);
+  color: #ffffff;
+  padding-left: 25px;
+}
+
+/* SIDEBAR LINK ACTIVE STATE */
+.sidebarLinkActive {
+  background: linear-gradient(90deg, rgba(63, 112, 180, 0.4) 0%, transparent 100%);
+  color: #00d4ff;
+  border-left: 4px solid #00d4ff;
+  padding-left: 16px;
+}
+
+.sidebarLinkActive::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #00d4ff 0%, #0066ff 100%);
+}
+
+/* SIDEBAR ICON */
+.sidebarIcon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+}
+
+/* SIDEBAR LABEL */
+.sidebarLabel {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* SIDEBAR FOOTER */
+.sidebarFooter {
+  padding: 20px;
+  border-top: 1px solid #0f3460;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* SIDEBAR VERSION TEXT */
+.sidebarVersion {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ================================================
+   SIDEBAR STATE MODIFIERS
+   ================================================ */
+
+/* SIDEBAR OPEN STATE */
+.sidebarOpen {
+  width: 280px;
+  transform: translateX(0);
+}
+
+.sidebarOpen .sidebarLabel {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* SIDEBAR COLLAPSED STATE */
+.sidebarCollapsed {
+  width: 80px;
+  transform: translateX(0);
+}
+
+.sidebarCollapsed .sidebarLabel {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+.sidebarCollapsed .sidebarLink {
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 16px 10px;
+  overflow: visible;
+  min-height: 56px;
+}
+
+.sidebarCollapsed .sidebarLink:hover {
+  padding-left: 10px;
+  background-color: rgba(63, 112, 180, 0.2);
+}
+
+.sidebarCollapsed .sidebarLinkActive {
+  padding-left: 10px;
+  border-left: 4px solid #00d4ff;
+}
+
+.sidebarCollapsed .sidebarIcon {
+  font-size: 24px;
+  min-width: 30px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebarCollapsed .sidebarFooter {
+  padding: 12px 10px;
+  text-align: center;
+}
+
+/* ================================================
+   RESPONSIVE DESIGN
+   ================================================ */
+
+/* TABLET (768px and below) */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+    padding-top: 70px;
+  }
+
+  .sidebar__link {
+    padding: 14px 15px;
+    font-size: 14px;
+  }
+
+  .sidebar__icon {
+    font-size: 16px;
+  }
+
+  .sidebar__label {
+    font-size: 13px;
+  }
+}
+
+/* MOBILE (480px and below) */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 70px;
+    padding-top: 70px;
+  }
+
+  .sidebar__link {
+    justify-content: center;
+    padding: 14px 10px;
+  }
+
+  .sidebar__link:hover {
+    padding-left: 10px;
+  }
+
+  .sidebar__link--active {
+    padding-left: 10px;
+  }
+
+  .sidebar__icon {
+    font-size: 18px;
+    min-width: auto;
+  }
+
+  .sidebar__label {
+    display: none;
+  }
+
+  .sidebar__footer {
+    display: none;
+  }
+
+  /* Show tooltip on hover for mobile */
+  .sidebar__link::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 90px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    font-size: 12px;
+  }
+
+  .sidebar__link:hover::after {
+    opacity: 1;
+  }
+}
