@@ -33,16 +33,20 @@ Why BEM? Industry standard, scalable, maintainable
   flex: 1;
   /* padding: 30px 20px; */
   background: var(--bg);
-  width: calc(100% - 280px); /* Account for sidebar width */
   box-sizing: border-box;
   overflow-x: hidden;
-  margin-left: 280px; /* Space for sidebar */
   margin-top: 65px; /* Space for header */
   transition: all 0.3s ease;
 }
 
-/* Adjust content when sidebar is closed (completely hidden) */
-.mainLayout:has(.sidebarClosed) .mainContent {
+/* When sidebar is OPEN - Content adjusts to the right */
+.mainLayoutOpen .mainContent {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+}
+
+/* When sidebar is CLOSED - Content takes full width */
+.mainLayoutClosed .mainContent {
   margin-left: 0;
   width: 100%;
 }

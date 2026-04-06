@@ -61,7 +61,7 @@ function App() {
         <Login onLogin={handleLogin} />
       ) : (
         // MAIN LAYOUT: Shows when user is logged in
-        <div className="mainLayout">
+        <div className={`mainLayout ${sidebarOpen ? 'mainLayoutOpen' : 'mainLayoutClosed'}`}>
           {/* Header - Fixed at top */}
           <Header user={user} onLogout={handleLogout} sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 

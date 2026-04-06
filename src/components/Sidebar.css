@@ -209,25 +209,13 @@
   transform: translateX(0);
 }
 
-/* SIDEBAR CLOSED STATE */
+/* SIDEBAR CLOSED STATE - Completely hide sidebar */
 .sidebarClosed {
-  width: 80px;
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
-}
-
-/* Hide labels and submenus when collapsed */
-.sidebarClosed .sidebarLinkLabel,
-.sidebarClosed .sidebarChevron,
-.sidebarClosed .sidebarSubmenu {
-  display: none;
-}
-
-/* Center icon in collapsed state */
-.sidebarClosed .sidebarLink {
-  justify-content: center;
-  padding: 14px 0;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: width 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* SIDEBAR FOOTER */
