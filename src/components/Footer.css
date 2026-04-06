@@ -150,13 +150,26 @@ BEM Structure:
 .footerBottom p {
   margin: 0;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(215, 212, 212, 0.6);
+  padding: 1px 18px;
 }
 
 /* ===== FOOTER VERSION: Version Info ===== */
 .footerVersion {
   font-weight: 500;
   color: var(--accent);
+}
+
+/* ===== FOOTER STATUS: Status Info ===== */
+.footerStatus {
+  margin: 0;
+  font-size: 12px;
+  color: white;
+}
+
+.footerStatusOnline {
+  color: white;
+  font-weight: 600;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -215,4 +228,6 @@ BEM Structure:
   .footerBottom p {
     font-size: 11px;
   }
+
+  
 }

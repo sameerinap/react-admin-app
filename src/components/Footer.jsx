@@ -8,7 +8,7 @@ export default function Footer({ sidebarOpen }) {
       {/* Footer Bottom */}
       <div className="footerBottom">
         <p className="footerCopy">
-          &copy; 2024 React Admin Portal. All rights reserved.
+          &copy; 2026 React Admin Portal. All rights reserved.
         </p>
         <p className="footerStatus">
           Status: <span className="footerStatusOnline">● Online</span>

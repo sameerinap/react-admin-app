@@ -148,14 +148,14 @@ function UserManagement() {
                     onClick={() => handleEditClick(user)}
                     title="Edit user"
                   >
-                    ✏️ Edit
+                    ✏️
                   </button>
                   <button 
                     className="actionButton deleteButton"
                     onClick={() => handleDeleteClick(user.id)}
                     title="Delete user"
                   >
-                    🗑️ Delete
+                    🗑️
                   </button>
                 </td>
               </tr>
