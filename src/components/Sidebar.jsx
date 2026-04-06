@@ -18,49 +18,89 @@ function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', on
       id: 'home',
       label: 'Home',
       icon: '🏠',
-      hasSubmenu: true,
+      page: 'home',
+      submenu: [
+        { id: 'dashboard', label: 'Dashboard', icon: '📈', page: 'home' },
+        { id: 'overview', label: 'Overview', icon: '👁️', page: 'home' },
+        { id: 'activity', label: 'Activity', icon: '📝', page: 'home' },
+      ],
     },
     {
       id: 'userManagement',
       label: 'User Management',
       icon: '👥',
-      hasSubmenu: true,
+      page: 'userManagement',
+      submenu: [
+        { id: 'users', label: 'Users', icon: '👤', page: 'userManagement' },
+        { id: 'roles', label: 'Roles', icon: '🏷️', page: 'userManagement' },
+        { id: 'permissions', label: 'Permissions', icon: '🔐', page: 'userManagement' },
+      ],
     },
     {
       id: 'analytics',
       label: 'Analytics',
       icon: '📊',
-      hasSubmenu: true,
+      page: 'analytics',
+      submenu: [
+        { id: 'reports', label: 'Reports', icon: '📄', page: 'analytics' },
+        { id: 'trends', label: 'Trends', icon: '📈', page: 'analytics' },
+        { id: 'metrics', label: 'Metrics', icon: '📐', page: 'analytics' },
+      ],
     },
     {
       id: 'reports',
       label: 'Reports',
       icon: '📄',
-      hasSubmenu: true,
+      page: 'reports',
+      submenu: [
+        { id: 'monthly', label: 'Monthly', icon: '📋', page: 'reports' },
+        { id: 'quarterly', label: 'Quarterly', icon: '📊', page: 'reports' },
+        { id: 'annual', label: 'Annual', icon: '📅', page: 'reports' },
+      ],
     },
     {
       id: 'settings',
       label: 'Settings',
       icon: '⚙️',
-      hasSubmenu: true,
+      page: 'settings',
+      submenu: [
+        { id: 'general', label: 'General', icon: '⚙️', page: 'settings' },
+        { id: 'security', label: 'Security', icon: '🔒', page: 'settings' },
+        { id: 'notifications', label: 'Notifications', icon: '🔔', page: 'settings' },
+      ],
     },
     {
       id: 'configuration',
       label: 'Configuration',
       icon: '🔧',
-      hasSubmenu: true,
+      page: 'configuration',
+      submenu: [
+        { id: 'system', label: 'System', icon: '💻', page: 'configuration' },
+        { id: 'database', label: 'Database', icon: '🗄️', page: 'configuration' },
+        { id: 'api', label: 'API', icon: '🌐', page: 'configuration' },
+      ],
     },
     {
       id: 'documentation',
       label: 'Documentation',
       icon: '📚',
-      hasSubmenu: true,
+      page: 'documentation',
+      submenu: [
+        { id: 'guides', label: 'Guides', icon: '📖', page: 'documentation' },
+        { id: 'faq', label: 'FAQ', icon: '❓', page: 'documentation' },
+        { id: 'api-docs', label: 'API Docs', icon: '📎', page: 'documentation' },
+      ],
     },
     {
       id: 'support',
       label: 'Support',
       icon: '🆘',
-      hasSubmenu: true,
+      page: 'support',
+      submenu: [
+        { id: 'help', label: 'Help', icon: '🤝', page: 'support' },
+        { id: 'contact', label: 'Contact', icon: '📧', page: 'support' },
+        { id: 'feedback', label: 'Feedback', icon: '💬', page: 'support' },
+      ],
     },
   ];
 
@@ -79,23 +119,49 @@ function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', on
           <ul className="sidebarMenu">
             {menuItems.map((item) => (
               <li key={item.id} className="sidebarItem">
+                {/* Main Menu Item */}
                 <div
-                  className={`sidebarSection ${
-                    expandedSections[item.id] ? 'sidebarSectionExpanded' : ''
-                  } ${currentPage === item.id ? 'sidebarSectionActive' : ''}`}
+                  className={`sidebarLink ${
+                    expandedSections[item.id] ? 'sidebarLinkExpanded' : ''
+                  } ${currentPage === item.id ? 'sidebarLinkActive' : ''}`}
                   onClick={() => {
                     toggleSection(item.id);
-                    onPageChange(item.id);
+                    onPageChange(item.page);
                   }}
+                  title={isOpen ? item.label : item.label}
                 >
                   <span className="sidebarIcon">{item.icon}</span>
-                  <span className="sidebarLabel">{item.label}</span>
-                  {item.hasSubmenu && (
-                    <span className={`sidebarChevron ${expandedSections[item.id] ? 'chevronOpen' : ''}`}>
-                      ▼
-                    </span>
+                  {isOpen && (
+                    <>
+                      <span className="sidebarLinkLabel">{item.label}</span>
+                      {item.submenu && (
+                        <span className={`sidebarChevron ${expandedSections[item.id] ? 'chevronOpen' : ''}`}>
+                          ▼
+                        </span>
+                      )}
+                    </>
                   )}
                 </div>
+
+                {/* Submenu Items - Only show when expanded and sidebar is open */}
+                {isOpen && expandedSections[item.id] && item.submenu && (
+                  <ul className="sidebarSubmenu">
+                    {item.submenu.map((submenu) => (
+                      <li key={submenu.id} className="sidebarSubmenuItem">
+                        <div
+                          className={`sidebarSubmenuLink ${
+                            currentPage === submenu.page ? 'sidebarSubmenuLinkActive' : ''
+                          }`}
+                          onClick={() => onPageChange(submenu.page)}
+                          title={submenu.label}
+                        >
+                          <span className="sidebarSubmenuIcon">{submenu.icon}</span>
+                          <span className="sidebarSubmenuLabel">{submenu.label}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
