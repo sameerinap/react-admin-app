@@ -1,0 +1,487 @@
+/* USER MANAGEMENT PAGE STYLES - camelCase CONVENTION */
+
+/* ===== MAIN CONTAINER ===== */
+.userManagement {
+  background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 100%);
+  min-height: calc(100vh - 65px);
+  color: white;
+}
+
+/* ===== HEADER SECTION ===== */
+.userManagementHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 0 10px;
+}
+
+.userManagementTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* ===== ADD USER BUTTON ===== */
+.addUserButton {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bg) 100%);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(100, 200, 255, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.addUserButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 200, 255, 0.5);
+  background: linear-gradient(135deg, var(--accent-bg) 0%, var(--accent) 100%);
+}
+
+.addUserButton:active {
+  transform: translateY(0);
+}
+
+/* ===== TABLE CONTAINER ===== */
+.userTableContainer {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* ===== TABLE STYLES ===== */
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.userTableHeader {
+  background: linear-gradient(135deg, rgba(100, 200, 255, 0.15) 0%, rgba(100, 200, 255, 0.05) 100%);
+  border-bottom: 2px solid rgba(100, 200, 255, 0.3);
+}
+
+.userTableHeader th {
+  padding: 10px 8px;
+  text-align: left;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
+.userTableRow {
+  border-bottom: 1px solid rgba(100, 200, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.userTableRow:hover {
+  background-color: rgba(100, 200, 255, 0.1);
+  transform: scale(0.995);
+}
+
+.userTableRowAlt {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.userTableCell {
+  padding: 8px 8px;
+  color: rgba(255, 255, 255, 0.8);
+  vertical-align: middle;
+}
+
+.userNameCell {
+  font-weight: 600;
+  color: white;
+}
+
+/* ===== BADGE STYLES ===== */
+.roleBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+.roleBadgeAdmin {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.roleBadgeManager {
+  background: rgba(100, 200, 255, 0.2);
+  color: #64c8ff;
+  border: 1px solid rgba(100, 200, 255, 0.3);
+}
+
+.roleBadgeUser {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+.statusBadgeActive {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.statusBadgeInactive {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ff9800;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+/* ===== ACTION BUTTONS ===== */
+.userActionsCell {
+  display: flex;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.actionButton {
+  padding: 5px 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.editButton {
+  background: rgba(100, 200, 255, 0.2);
+  color: #64c8ff;
+  border: 1px solid rgba(100, 200, 255, 0.3);
+}
+
+.editButton:hover {
+  background: rgba(100, 200, 255, 0.3);
+  border-color: rgba(100, 200, 255, 0.5);
+  transform: scale(1.02);
+}
+
+.deleteButton {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.deleteButton:hover {
+  background: rgba(255, 107, 107, 0.3);
+  border-color: rgba(255, 107, 107, 0.5);
+  transform: scale(1.02);
+}
+
+/* ===== MODAL STYLES ===== */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modalContent {
+  background: linear-gradient(135deg, #1a1a2e 0%, #262641 100%);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.modalTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 25px 0;
+}
+
+/* ===== FORM STYLES ===== */
+.userForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.formInput {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.formInput:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(100, 200, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(100, 200, 255, 0.15);
+}
+
+.formInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.formInput option {
+  background: #1a1a2e;
+  color: white;
+}
+
+/* ===== FORM ACTIONS ===== */
+.formActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.submitButton {
+  flex: 1;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bg) 100%);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 200, 255, 0.4);
+}
+
+.cancelButton {
+  flex: 1;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(100, 200, 255, 0.4);
+}
+
+/* ===== USER STATS ===== */
+.userStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.statCard {
+  background: rgba(100, 200, 255, 0.1);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  background: rgba(100, 200, 255, 0.15);
+  border-color: rgba(100, 200, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.statLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bg) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .userTableCell {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+
+  .userTableHeader th {
+    padding: 14px 8px;
+    font-size: 11px;
+  }
+
+  .userActionsCell {
+    gap: 6px;
+  }
+
+  .actionButton {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .userManagement {
+    padding: 15px;
+  }
+
+  .userManagementHeader {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .userManagementTitle {
+    font-size: 22px;
+  }
+
+  .addUserButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .userTable {
+    font-size: 12px;
+  }
+
+  .userTableCell {
+    padding: 10px 6px;
+  }
+
+  .userTableHeader th {
+    padding: 12px 6px;
+    font-size: 10px;
+  }
+
+  .roleBadge,
+  .statusBadge {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .userActionsCell {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .actionButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .modalContent {
+    max-width: 95%;
+    padding: 20px;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .submitButton,
+  .cancelButton {
+    width: 100%;
+  }
+
+  .userStats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .userManagementTitle {
+    font-size: 18px;
+  }
+
+  .userTable {
+    font-size: 11px;
+  }
+
+  .userTableCell,
+  .userTableHeader th {
+    padding: 8px 4px;
+  }
+
+  .statCard {
+    padding: 15px;
+  }
+
+  .statValue {
+    font-size: 24px;
+  }
+}

@@ -26,7 +26,7 @@ function Header({ user, onLogout, sidebarOpen, onToggleSidebar }) {
           ☰
         </button>
         <div className="headerBrandContent">
-          <h2 className="headerTitle">Myotronics Admin</h2>
+          <h2 className="headerTitle">React Admin</h2>
           <p className="headerSubtitle">Management System</p>
         </div>
       </div>

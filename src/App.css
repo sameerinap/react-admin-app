@@ -1,9 +1,9 @@
 /* 
 ===========================================
-APP/DASHBOARD COMPONENT STYLES - BEM CONVENTION
+APP/MAIN COMPONENT STYLES - BEM CONVENTION
 ===========================================
 BEM Structure:
-  Block: .app, .dashboard, .welcome, .stats, .action, .activity
+  Block: .app, .main, .welcome, .stats, .action, .activity
   Elements: .__container, .__grid, .__card, etc.
   Modifiers: --primary, --secondary, etc.
 Why BEM? Industry standard, scalable, maintainable
@@ -19,8 +19,8 @@ Why BEM? Industry standard, scalable, maintainable
   font-family: var(--sans);
 }
 
-/* ===== DASHBOARD LAYOUT: Main Layout ===== */
-.dashboardLayout {
+/* ===== MAIN LAYOUT: Main Layout ===== */
+.mainLayout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -28,10 +28,10 @@ Why BEM? Industry standard, scalable, maintainable
   overflow-x: hidden;
 }
 
-/* ===== DASHBOARD CONTENT: Main Content Area ===== */
-.dashboardContent {
+/* ===== MAIN CONTENT: Main Content Area ===== */
+.mainContent {
   flex: 1;
-  padding: 30px 20px;
+  /* padding: 30px 20px; */
   background: var(--bg);
   width: calc(100% - 280px); /* Account for sidebar width */
   box-sizing: border-box;
@@ -42,13 +42,14 @@ Why BEM? Industry standard, scalable, maintainable
 }
 
 /* Adjust content when sidebar is closed (completely hidden) */
-.dashboardLayout:has(.sidebarClosed) .dashboardContent {
+.mainLayout:has(.sidebarClosed) .mainContent {
   margin-left: 0;
   width: 100%;
 }
 
-/* ===== DASHBOARD CONTAINER: Full-width Container ===== */
-.dashboardContainer {
+/* ===== MAIN CONTAINER: Full-width Container ===== */
+.mainContainer {
+  padding: 20px;;
   width: 100%;
   max-width: none;
   box-sizing: border-box;
@@ -243,7 +244,7 @@ Why BEM? Industry standard, scalable, maintainable
    =============================================== */
 
 @media (max-width: 1024px) {
-  .dashboardContent {
+  .mainContent {
     padding: 20px 12px;
   }
 
@@ -262,7 +263,7 @@ Why BEM? Industry standard, scalable, maintainable
 }
 
 @media (max-width: 768px) {
-  .dashboardContent {
+  .mainContent {
     padding: 20px 12px;
   }
 
@@ -310,7 +311,7 @@ Why BEM? Industry standard, scalable, maintainable
 }
 
 @media (max-width: 480px) {
-  .dashboard__content {
+  .mainContent {
     padding: 16px 8px;
   }
 

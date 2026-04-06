@@ -49,7 +49,7 @@ function Login({ onLogin }) {
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     // Demo credentials for testing
-    if (email === 'admin@myotronics.com' && password === 'admin123') {
+    if (email === 'admin@react.com' && password === 'admin123') {
       setIsLoading(false);
       onLogin({ email, name: 'Admin User' });
     } else {
@@ -82,7 +82,7 @@ function Login({ onLogin }) {
       <div className="loginCard">
         <div className="loginHeader">
           <h1 className="loginTitle">Admin Portal</h1>
-          <p className="loginSubtitle">Welcome to Myotronics Admin</p>
+          <p className="loginSubtitle">Welcome to React Admin</p>
         </div>
 
         <form onSubmit={handleSubmit} className="loginForm">
@@ -92,7 +92,7 @@ function Login({ onLogin }) {
             <input
               id="email"
               type="email"
-              placeholder="admin@myotronics.com"
+              placeholder="admin@react.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="loginInput"
@@ -130,7 +130,7 @@ function Login({ onLogin }) {
         {/* Demo Credentials Info */}
         {/* <div className="login__info">
           <p><strong>Demo Credentials:</strong></p>
-          <p>📧 Email: <strong>admin@myotronics.com</strong></p>
+          <p>📧 Email: <strong>admin@react.com</strong></p>
           <p>🔐 Password: <strong>admin123</strong></p>
           <p>💡 These are test credentials for demonstration purposes</p>
         </div> */}

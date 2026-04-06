@@ -1,0 +1,73 @@
+/* BREADCRUMB COMPONENT STYLES - camelCase CONVENTION */
+
+/* ===== BREADCRUMB CONTAINER ===== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 20px;
+  padding: 10px 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(100, 200, 255, 0.05);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
+}
+
+.breadcrumbContainer {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ===== BREADCRUMB ITEMS ===== */
+.breadcrumbItem {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  cursor: default;
+  transition: color 0.2s ease, background 0.2s ease;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.breadcrumbItem:not(.active) {
+  cursor: pointer;
+}
+
+.breadcrumbItem:not(.active):hover {
+  color: var(--accent);
+  background: rgba(100, 200, 255, 0.1);
+}
+
+.breadcrumbItem.active {
+  color: var(--accent);
+  font-weight: 600;
+  background: rgba(100, 200, 255, 0.1);
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: default;
+}
+
+/* ===== BREADCRUMB SEPARATOR ===== */
+.breadcrumbSeparator {
+  color: rgba(100, 200, 255, 0.4);
+  margin: 0 2px;
+  font-weight: 300;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 12px;
+    padding: 8px 8px;
+    margin-bottom: 15px;
+  }
+
+  .breadcrumbItem {
+    padding: 1px 3px;
+  }
+
+  .breadcrumbItem.active {
+    padding: 1px 6px;
+  }
+}

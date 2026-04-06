@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './Sidebar.css';
 
-function Sidebar({ isOpen = true, onToggleSidebar }) {
+function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', onPageChange }) {
   const [expandedSections, setExpandedSections] = useState({
-    dashboard: false,
+    home: false,
     userManagement: false,
     analytics: false,
     reports: false,
@@ -15,9 +15,9 @@ function Sidebar({ isOpen = true, onToggleSidebar }) {
 
   const menuItems = [
     {
-      id: 'dashboard',
-      label: 'Dashboard',
-      icon: '🔌',
+      id: 'home',
+      label: 'Home',
+      icon: '🏠',
       hasSubmenu: true,
     },
     {
@@ -82,8 +82,11 @@ function Sidebar({ isOpen = true, onToggleSidebar }) {
                 <div
                   className={`sidebarSection ${
                     expandedSections[item.id] ? 'sidebarSectionExpanded' : ''
-                  }`}
-                  onClick={() => toggleSection(item.id)}
+                  } ${currentPage === item.id ? 'sidebarSectionActive' : ''}`}
+                  onClick={() => {
+                    toggleSection(item.id);
+                    onPageChange(item.id);
+                  }}
                 >
                   <span className="sidebarIcon">{item.icon}</span>
                   <span className="sidebarLabel">{item.label}</span>
