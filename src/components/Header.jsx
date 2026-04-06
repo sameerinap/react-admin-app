@@ -36,12 +36,18 @@ function Header({ user, onLogout, sidebarOpen, onToggleSidebar }) {
 
         {/* User Info Section */}
         <div className="headerUser">
+          {/* Notification Icon */}
+          <div className="headerNotification">
+            <span className="notificationIcon">🔔</span>
+            <span className="notificationBadge">3</span>
+          </div>
+
           {/* User Profile Display */}
           <div className="headerInfo">
             <span className="headerAvatar">👤</span>
             <div className="headerDetails">
               <p className="headerName">{user?.name || 'User'}</p>
-              <p className="headerEmail">{user?.email || 'No email'}</p>
+              {/* <p className="headerEmail">{user?.email || 'No email'}</p> */}
             </div>
           </div>
 

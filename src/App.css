@@ -37,14 +37,14 @@ Why BEM? Industry standard, scalable, maintainable
   box-sizing: border-box;
   overflow-x: hidden;
   margin-left: 280px; /* Space for sidebar */
-  margin-top: 80px; /* Space for header */
+  margin-top: 65px; /* Space for header */
   transition: all 0.3s ease;
 }
 
-/* Adjust content when sidebar is collapsed */
-.dashboardLayout:has(.sidebarCollapsed) .dashboardContent {
-  margin-left: 80px;
-  width: calc(100% - 80px);
+/* Adjust content when sidebar is closed (completely hidden) */
+.dashboardLayout:has(.sidebarClosed) .dashboardContent {
+  margin-left: 0;
+  width: 100%;
 }
 
 /* ===== DASHBOARD CONTAINER: Full-width Container ===== */
@@ -217,7 +217,7 @@ Why BEM? Industry standard, scalable, maintainable
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background: white;
+  /* background: white; */
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 16px;

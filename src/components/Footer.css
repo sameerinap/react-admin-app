@@ -21,12 +21,15 @@ BEM Structure:
 .footerOpen {
   width: calc(100% - 280px);
   margin-left: 280px;
+  transition: all 0.3s ease;
 }
 
-/* Footer when sidebar is CLOSED */
+/* Footer when sidebar is CLOSED - Completely hidden */
 .footerClosed {
-  width: calc(100% - 80px);
-  margin-left: 80px;
+  width: 100%;
+  margin-left: 0;
+  transition: all 0.3s ease;
+  height: 30px;
 }
 
 /* ===== FOOTER CONTAINER: Full Width Container ===== */
@@ -135,7 +138,7 @@ BEM Structure:
 
 /* ===== FOOTER BOTTOM: Copyright Section ===== */
 .footerBottom {
-  padding: 20px 24px;
+  /* padding: 20px 24px; */
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;

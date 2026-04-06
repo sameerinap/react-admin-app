@@ -67,11 +67,11 @@ function App() {
           <main className="dashboardContent">
             <div className="dashboardContainer">
               <section className="welcomeSection">
-                <h1 className="welcomeTitle">Welcome, {user?.name}! 👋</h1>
+                {/* <h1 className="welcomeTitle">Welcome, {user?.name}! 👋</h1>
                 <p className="welcomeMessage">
                   Welcome to the Myotronics Administration Portal. 
                   This is your central hub for managing systems, users, and reporting.
-                </p>
+                </p> */}
 
                 {/* Dashboard Stats Cards */}
                 <div className="statsGrid">
@@ -84,13 +84,13 @@ function App() {
                   <div className="statsCard">
                     <div className="statsIcon">👥</div>
                     <h3>User Management</h3>
-                    <p>Manage administrators and system users</p>
+                    <p>Manage administrators and system </p>
                   </div>
 
                   <div className="statsCard">
                     <div className="statsIcon">⚙️</div>
                     <h3>System Settings</h3>
-                    <p>Configure system parameters and preferences</p>
+                    <p>Configure system parameters</p>
                   </div>
 
                   <div className="statsCard">

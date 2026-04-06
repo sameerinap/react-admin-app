@@ -10,10 +10,10 @@ Structure:
 
 /* ===== HEADER BLOCK: Main Header ===== */
 .header {
-  background: #1a1a2e;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bg) 100%);
   color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  border-bottom: 2px solid #00d4ff;
+  border-bottom: 2px solid var(--accent);
   position: fixed;
   top: 0;
   left: 0;
@@ -21,22 +21,22 @@ Structure:
   z-index: 101;
   width: 100%;
   overflow: visible;
-  height: 80px;
+  height: 65px;
   display: flex;
   align-items: center;
 }
 
 /* ===== HEADER BRAND BOX: Logo/Title Section (Left aligned) ===== */
 .headerBrand {
-  background: #0f0f1e;
-  border-right: 2px solid #00d4ff;
-  padding: 16px 20px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bg) 100%);
+  border-right: 2px solid var(--accent);
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: all 0.3s ease;
-  box-shadow: 2px 0 8px rgba(0, 212, 255, 0.2);
+  box-shadow: 2px 0 8px rgba(100, 200, 255, 0.2);
 }
 
 .headerBrandOpen {
@@ -52,27 +52,27 @@ Structure:
 /* ===== TOGGLE BUTTON: Collapse/Expand Sidebar ===== */
 .headerToggle {
   background: #262641;
-  border: 2px solid #00d4ff;
-  color: #00d4ff;
-  font-size: 24px;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-size: 20px;
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 6px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   flex-shrink: 0;
-  margin-right: 10px;
+  margin-right: 8px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(100, 200, 255, 0.2);
 }
 
 .headerToggle:hover {
-  background: #00d4ff;
+  background: var(--accent);
   color: #1a1a2e;
-  border-color: #00d4ff;
+  border-color: var(--accent);
   transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(100, 200, 255, 0.4);
 }
 
 .headerToggle:active {
@@ -83,7 +83,7 @@ Structure:
 .headerBrandContent {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   flex: 1;
 }
 
@@ -93,7 +93,7 @@ Structure:
 
 .headerTitle {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: white;
   white-space: nowrap;
@@ -101,22 +101,23 @@ Structure:
 
 .headerSubtitle {
   margin: 0;
-  font-size: 11px;
-  color: #00d4ff;
+  font-size: 10px;
+  color: var(--accent);
   font-weight: 500;
   white-space: nowrap;
   letter-spacing: 0.3px;
+  color: white;;
 }
 
 /* ===== HEADER CONTAINER: Dynamic Width Container ===== */
 .headerContainer {
   flex: 1;
   max-width: none;
-  padding: 16px 24px;
+  padding: 12px 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   box-sizing: border-box;
   overflow: visible;
   transition: all 0.3s ease;
@@ -134,30 +135,74 @@ Structure:
 .headerUser {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   flex-shrink: 0;
+}
+
+/* ===== HEADER NOTIFICATION: Notification Bell Icon ===== */
+.headerNotification {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bg) 100%);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(100, 200, 255, 0.2);
+}
+
+.headerNotification:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(100, 200, 255, 0.4);
+}
+
+.notificationIcon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff4444;
+  color: white;
+  font-size: 8px;
+  font-weight: 600;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1a1a2e;
 }
 
 /* ===== HEADER INFO: User Profile Display ===== */
 .headerInfo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
+  gap: 8px;
+  padding: 6px 10px;
   background: #262641;
-  border-radius: 8px;
-  border: 2px solid #00d4ff;
-  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.2);
+  border-radius: 6px;
+  /* border: 2px solid var(--accent); */
+  box-shadow: 0 2px 8px rgba(100, 200, 255, 0.2);
   transition: all 0.3s ease;
 }
 
 .headerInfo:hover {
-  border-color: #00d4ff;
-  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(100, 200, 255, 0.3);
 }
 
 .headerAvatar {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 /* ===== HEADER DETAILS: User Name & Email ===== */
@@ -169,40 +214,40 @@ Structure:
 
 .headerName {
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   color: white;
 }
 
 .headerEmail {
   margin: 0;
-  font-size: 11px;
-  color: #00d4ff;
+  font-size: 10px;
+  color: var(--accent);
   font-weight: 500;
 }
 
 /* ===== HEADER BUTTON: Logout Button ===== */
 .headerButton {
-  padding: 10px 24px;
-  background: #00d4ff;
+  padding: 8px 18px;
+  background: var(--accent);
   color: #1a1a2e;
-  border: 2px solid #00d4ff;
-  border-radius: 8px;
-  font-size: 13px;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
   flex-shrink: 0;
   min-width: fit-content;
-  box-shadow: 0 4px 8px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 4px 8px rgba(100, 200, 255, 0.3);
 }
 
 .headerButton:hover {
-  background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
-  border-color: #00d4ff;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bg) 100%);
+  border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 6px 16px rgba(100, 200, 255, 0.4);
 }
 
 .headerButton:active {
@@ -211,7 +256,7 @@ Structure:
 
 .headerButton:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 0 3px rgba(100, 200, 255, 0.3);
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
