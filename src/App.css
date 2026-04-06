@@ -162,7 +162,7 @@ Why BEM? Industry standard, scalable, maintainable
 
 /* ===== ACTION BUTTON: Individual Button ===== */
 .actionButton {
-  padding: 14px 20px;
+  padding: 8px 20px;
   background: linear-gradient(135deg, var(--accent) 0%, #8a1fcc 100%);
   color: white;
   border: none;
