@@ -18,12 +18,14 @@ Structure:
   top: 0;
   left: 0;
   right: 0;
-  z-index: 101;
+  z-index: 1000;
   width: 100%;
   overflow: visible;
   height: 65px;
   display: flex;
   align-items: center;
+  opacity: 1;
+  backdrop-filter: blur(10px);
 }
 
 /* ===== HEADER BRAND BOX: Logo/Title Section (Left aligned) ===== */
