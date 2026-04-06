@@ -27,6 +27,7 @@ function UserManagement() {
     status: 'Active'
   });
   const [editingId, setEditingId] = useState(null);
+  const [deleteConfirmModal, setDeleteConfirmModal] = useState({ show: false, userId: null, userName: '' });
 
   const handleAddClick = () => {
     setEditingId(null);
@@ -46,9 +47,21 @@ function UserManagement() {
   };
 
   const handleDeleteClick = (id) => {
-    if (window.confirm('Are you sure you want to delete this user?')) {
-      setUsers(users.filter(user => user.id !== id));
-    }
+    const user = users.find(u => u.id === id);
+    setDeleteConfirmModal({
+      show: true,
+      userId: id,
+      userName: user?.name || 'this user'
+    });
+  };
+
+  const handleConfirmDelete = () => {
+    setUsers(users.filter(user => user.id !== deleteConfirmModal.userId));
+    setDeleteConfirmModal({ show: false, userId: null, userName: '' });
+  };
+
+  const handleCancelDelete = () => {
+    setDeleteConfirmModal({ show: false, userId: null, userName: '' });
   };
 
   const handleInputChange = (e) => {
@@ -222,6 +235,32 @@ function UserManagement() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      {deleteConfirmModal.show && (
+        <div className="modalOverlay">
+          <div className="deleteConfirmModal">
+            <div className="deleteModalHeader">
+              <h3 className="deleteModalTitle">Delete User</h3>
+              <button className="deleteModalClose" onClick={handleCancelDelete}>✕</button>
+            </div>
+            <div className="deleteModalContent">
+              <p className="deleteModalMessage">
+                Are you sure you want to delete <strong>{deleteConfirmModal.userName}</strong>?
+              </p>
+              <p className="deleteModalWarning">This action cannot be undone.</p>
+            </div>
+            <div className="deleteModalActions">
+              <button className="deleteModalCancel" onClick={handleCancelDelete}>
+                Cancel
+              </button>
+              <button className="deleteModalConfirm" onClick={handleConfirmDelete}>
+                🗑️ Delete
+              </button>
+            </div>
           </div>
         </div>
       )}
