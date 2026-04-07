@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './Sidebar.css';
+import angleRightIcon from '../assets/angle-right.svg';
 
-function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', onPageChange }) {
+function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', currentSubmenu = '', onPageChange, onSubmenuChange }) {
   const [expandedSections, setExpandedSections] = useState({
     home: false,
     userManagement: false,
@@ -27,11 +28,11 @@ function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', on
     },
     {
       id: 'userManagement',
-      label: 'User Management',
+      label: 'Users',
       icon: '👥',
       page: 'userManagement',
       submenu: [
-        { id: 'users', label: 'Users', icon: '👤', page: 'userManagement' },
+        { id: 'users', label: 'User List', icon: '👤', page: 'userManagement' },
         { id: 'roles', label: 'Roles', icon: '🏷️', page: 'userManagement' },
         { id: 'permissions', label: 'Permissions', icon: '🔐', page: 'userManagement' },
       ],
@@ -126,19 +127,20 @@ function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', on
                   } ${currentPage === item.id ? 'sidebarLinkActive' : ''}`}
                   onClick={() => {
                     toggleSection(item.id);
-                    onPageChange(item.page);
                   }}
                   title={isOpen ? item.label : item.label}
                 >
                   <span className="sidebarIcon">{item.icon}</span>
                   {isOpen && (
                     <>
-                      <span className="sidebarLinkLabel">{item.label}</span>
                       {item.submenu && (
-                        <span className={`sidebarChevron ${expandedSections[item.id] ? 'chevronOpen' : ''}`}>
-                          ▼
-                        </span>
+                        <img 
+                          src={angleRightIcon} 
+                          alt="toggle" 
+                          className={`sidebarChevron ${expandedSections[item.id] ? 'chevronOpen' : ''}`}
+                        />
                       )}
+                      <span className="sidebarLinkLabel">{item.label}</span>
                     </>
                   )}
                 </div>
@@ -150,9 +152,12 @@ function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', on
                       <li key={submenu.id} className="sidebarSubmenuItem">
                         <div
                           className={`sidebarSubmenuLink ${
-                            currentPage === submenu.page ? 'sidebarSubmenuLinkActive' : ''
+                            currentSubmenu === submenu.id ? 'sidebarSubmenuLinkActive' : ''
                           }`}
-                          onClick={() => onPageChange(submenu.page)}
+                          onClick={() => {
+                            onPageChange(submenu.page);
+                            onSubmenuChange(submenu.id);
+                          }}
                           title={submenu.label}
                         >
                           <span className="sidebarSubmenuIcon">{submenu.icon}</span>

@@ -8,15 +8,19 @@ import './Breadcrumb.css';
  * - Shows current page location
  * - Clickable for navigation between pages
  * 
- * Props:
+ * Props:q
  *   - items: Array of breadcrumb items [{ label: 'Home', page: 'home' }, { label: 'User Management', active: true }]
  *   - onNavigate: Callback function to handle page navigation
  */
 
 function Breadcrumb({ items = [], onNavigate }) {
-  const handleClick = (page) => {
-    if (page && onNavigate) {
-      onNavigate(page);
+
+  const handleClick = (page, submenu, isActive) => {
+    // Don't navigate if this is the active item
+    if (isActive) return;
+    
+    if (onNavigate && page) {
+      onNavigate(page, submenu);
     }
   };
 
@@ -26,8 +30,8 @@ function Breadcrumb({ items = [], onNavigate }) {
         <div key={index} className="breadcrumbContainer">
           <span 
             className={`breadcrumbItem ${item.active ? 'active' : ''}`}
-            onClick={() => handleClick(item.page)}
-            style={{ cursor: item.page && !item.active ? 'pointer' : 'default' }}
+            onClick={() => handleClick(item.page, item.submenu, item.active)}
+            style={{ cursor: item.active ? 'default' : 'pointer' }}
           >
             {item.label}
           </span>

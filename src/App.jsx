@@ -32,8 +32,34 @@ function App() {
   // State to track sidebar visibility (toggle)
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  // State to track current page
+  // State to track current page and submenu
   const [currentPage, setCurrentPage] = useState('home');
+  const [currentSubmenu, setCurrentSubmenu] = useState('dashboard');
+
+  // Mapping of submenu IDs to their display labels
+  const submenuLabels = {
+    'dashboard': 'Dashboard',
+    'overview': 'Overview',
+    'activity': 'Activity',
+    'users': 'User List',
+    'roles': 'Roles',
+    'permissions': 'Permissions',
+    'reports': 'Reports',
+    'trends': 'Trends',
+    'metrics': 'Metrics',
+    'monthly': 'Monthly',
+    'quarterly': 'Quarterly',
+    'annual': 'Annual',
+    'general': 'General',
+    'security': 'Security',
+    'notifications': 'Notifications',
+    'system': 'System',
+    'database': 'Database',
+    'api': 'API',
+    'guides': 'Guides',
+    'faq': 'FAQ',
+    'api-docs': 'API Docs',
+  };
 
   /**
    * handleLogin - Called when user successfully logs in
@@ -66,29 +92,59 @@ function App() {
           <Header user={user} onLogout={handleLogout} sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
           {/* Sidebar - Fixed on left */}
-          <Sidebar isOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} currentPage={currentPage} onPageChange={setCurrentPage} />
+          <Sidebar isOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} currentPage={currentPage} currentSubmenu={currentSubmenu} onPageChange={setCurrentPage} onSubmenuChange={setCurrentSubmenu} />
 
           {/* Main Content Area */}
           <main className="mainContent">
             <div className="mainContainer">
-              {/* Breadcrumb Navigation - Only show on non-home pages */}
+              {/* Breadcrumb Navigation - Standard 3-level breadcrumb */}
+              {currentPage === 'home' && (
+                <Breadcrumb items={[
+                  { label: 'Home', active: currentSubmenu === 'dashboard' },
+                  { label: submenuLabels[currentSubmenu] || currentSubmenu, page: 'home', submenu: currentSubmenu, active: currentSubmenu !== 'dashboard' }
+                ]} onNavigate={(page, sub) => { setCurrentPage(page); if(sub) setCurrentSubmenu(sub); }} />
+              )}
               {currentPage === 'userManagement' && (
                 <Breadcrumb items={[
-                  { label: 'Home', page: 'home' },
-                  { label: 'User Management', active: true }
-                ]} onNavigate={setCurrentPage} />
+                  { label: 'Home', page: 'home', submenu: 'dashboard' },
+                  { label: 'Users', page: 'userManagement', submenu: 'users' },
+                  { label: submenuLabels[currentSubmenu] || currentSubmenu, active: true }
+                ]} onNavigate={(page, sub) => { setCurrentPage(page); if(sub) setCurrentSubmenu(sub); }} />
+              )}
+              {currentPage === 'analytics' && (
+                <Breadcrumb items={[
+                  { label: 'Home', page: 'home', submenu: 'dashboard' },
+                  { label: 'Analytics', page: 'analytics', submenu: 'reports' },
+                  { label: submenuLabels[currentSubmenu] || currentSubmenu, active: true }
+                ]} onNavigate={(page, sub) => { setCurrentPage(page); if(sub) setCurrentSubmenu(sub); }} />
               )}
               {currentPage === 'settings' && (
                 <Breadcrumb items={[
-                  { label: 'Home', page: 'home' },
-                  { label: 'Settings', active: true }
-                ]} onNavigate={setCurrentPage} />
+                  { label: 'Home', page: 'home', submenu: 'dashboard' },
+                  { label: 'Settings', page: 'settings', submenu: 'general' },
+                  { label: submenuLabels[currentSubmenu] || currentSubmenu, active: true }
+                ]} onNavigate={(page, sub) => { setCurrentPage(page); if(sub) setCurrentSubmenu(sub); }} />
               )}
               {currentPage === 'reports' && (
                 <Breadcrumb items={[
-                  { label: 'Home', page: 'home' },
-                  { label: 'Reports', active: true }
-                ]} onNavigate={setCurrentPage} />
+                  { label: 'Home', page: 'home', submenu: 'dashboard' },
+                  { label: 'Reports', page: 'reports', submenu: 'monthly' },
+                  { label: submenuLabels[currentSubmenu] || currentSubmenu, active: true }
+                ]} onNavigate={(page, sub) => { setCurrentPage(page); if(sub) setCurrentSubmenu(sub); }} />
+              )}
+              {currentPage === 'configuration' && (
+                <Breadcrumb items={[
+                  { label: 'Home', page: 'home', submenu: 'dashboard' },
+                  { label: 'Configuration', page: 'configuration', submenu: 'system' },
+                  { label: submenuLabels[currentSubmenu] || currentSubmenu, active: true }
+                ]} onNavigate={(page, sub) => { setCurrentPage(page); if(sub) setCurrentSubmenu(sub); }} />
+              )}
+              {currentPage === 'documentation' && (
+                <Breadcrumb items={[
+                  { label: 'Home', page: 'home', submenu: 'dashboard' },
+                  { label: 'Documentation', page: 'documentation', submenu: 'guides' },
+                  { label: submenuLabels[currentSubmenu] || currentSubmenu, active: true }
+                ]} onNavigate={(page, sub) => { setCurrentPage(page); if(sub) setCurrentSubmenu(sub); }} />
               )}
 
               {/* Conditionally render pages */}
@@ -104,7 +160,7 @@ function App() {
 
                     <div className="statsCard">
                       <div className="statsIcon">👥</div>
-                      <h3>User Management</h3>
+                      <h3>Users</h3>
                       <p>Manage administrators and system </p>
                     </div>
 
@@ -153,7 +209,7 @@ function App() {
                 </section>
               )}
 
-              {/* User Management Page */}
+              {/* Users Page */}
               {currentPage === 'userManagement' && (
                 <UserManagement />
               )}

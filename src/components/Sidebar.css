@@ -16,6 +16,7 @@
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   z-index: 100;
   overflow-y: auto;
+  overflow-x: hidden;
   transition: width 0.3s ease;
 }
 
@@ -101,15 +102,16 @@
 
 /* SIDEBAR CHEVRON/ARROW */
 .sidebarChevron {
-  font-size: 12px;
+  width: 16px;
+  height: 16px;
   transition: transform 0.3s ease;
-  transform: rotate(-90deg);
+  transform: rotate(0deg);
   color: #64c8ff;
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .chevronOpen {
-  transform: rotate(0deg);
+  transform: rotate(90deg);
 }
 
 /* ================================================
