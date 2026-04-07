@@ -56,6 +56,8 @@
   position: relative;
   outline: none;
   user-select: none;
+  box-sizing: border-box;
+
 }
 
 /* SIDEBAR LINK HOVER STATE */
@@ -102,11 +104,15 @@
 
 /* SIDEBAR CHEVRON/ARROW */
 .sidebarChevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 16px;
   height: 16px;
   transition: transform 0.3s ease;
   transform: rotate(0deg);
   color: #64c8ff;
+  margin-left: auto;
   flex-shrink: 0;
 }
 

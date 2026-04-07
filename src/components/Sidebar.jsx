@@ -133,6 +133,7 @@ function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', cu
                   <span className="sidebarIcon">{item.icon}</span>
                   {isOpen && (
                     <>
+                      <span className="sidebarLinkLabel">{item.label}</span>
                       {item.submenu && (
                         <img 
                           src={angleRightIcon} 
@@ -140,7 +141,6 @@ function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', cu
                           className={`sidebarChevron ${expandedSections[item.id] ? 'chevronOpen' : ''}`}
                         />
                       )}
-                      <span className="sidebarLinkLabel">{item.label}</span>
                     </>
                   )}
                 </div>
