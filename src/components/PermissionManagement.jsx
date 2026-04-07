@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './UserManagement.css';
+import './PermissionManagement.css';
 
 function PermissionManagement() {
   // Master list of available permissions (catalog)
@@ -135,16 +136,13 @@ function PermissionManagement() {
                 <td className="userTableCell">{permission.description}</td>
                 <td className="userTableCell">{permission.module}</td>
                 <td className="userTableCell">
-                  <span style={{ 
-                    padding: '4px 8px', 
-                    borderRadius: '4px', 
-                    fontSize: '12px',
-                    backgroundColor: permission.type === 'READ' ? '#1e40af' : 
-                                     permission.type === 'CREATE' ? '#059669' :
-                                     permission.type === 'UPDATE' ? '#d97706' :
-                                     permission.type === 'DELETE' ? '#dc2626' : '#6b7280',
-                    color: '#fff'
-                  }}>
+                  <span className={`permissionTypeBadge ${
+                    permission.type === 'READ' ? 'typeRead' :
+                    permission.type === 'CREATE' ? 'typeCreate' :
+                    permission.type === 'UPDATE' ? 'typeUpdate' :
+                    permission.type === 'DELETE' ? 'typeDelete' :
+                    'typeDefault'
+                  }`}>
                     {permission.type}
                   </span>
                 </td>

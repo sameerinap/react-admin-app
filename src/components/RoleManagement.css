@@ -1,0 +1,113 @@
+/* Permission Container */
+.permissionContainer {
+  background-color: #1a2942;
+  border: 1px solid #2d3f5b;
+  padding: 16px;
+  border-radius: 8px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.permissionContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.permissionContainer::-webkit-scrollbar-track {
+  background: rgba(0, 212, 255, 0.05);
+  border-radius: 3px;
+}
+
+.permissionContainer::-webkit-scrollbar-thumb {
+  background: #00d4ff;
+  border-radius: 3px;
+}
+
+.permissionContainer::-webkit-scrollbar-thumb:hover {
+  background: #00b8cc;
+}
+
+/* Permission Item Wrapper */
+.permissionItem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.permissionItem:last-child {
+  margin-bottom: 0;
+}
+
+/* Permission Label */
+.permissionLabel {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.permissionLabel:hover {
+  background-color: rgba(0, 212, 255, 0.05);
+  border-color: rgba(0, 212, 255, 0.15);
+}
+
+.permissionLabel.selected {
+  background-color: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.2);
+}
+
+/* Permission Checkbox */
+.permissionCheckbox {
+  margin-right: 14px;
+  margin-top: 2px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  accent-color: #00d4ff;
+  flex-shrink: 0;
+}
+
+/* Permission Text Container */
+.permissionTextContainer {
+  flex: 1;
+}
+
+/* Permission Display Name */
+.permissionDisplayName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.permissionLabel.selected .permissionDisplayName {
+  color: #00d4ff;
+}
+
+/* Permission Code */
+.permissionCode {
+  font-size: 13px;
+  color: #9ca3af;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* Permission Counter */
+.permissionCounter {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #64c8ff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.permissionCounter strong {
+  color: #00d4ff;
+  font-weight: 700;
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './UserManagement.css';
+import './RoleManagement.css';
 
 function RoleManagement() {
   // Master permissions list (from Permission Catalog)
@@ -223,24 +224,30 @@ function RoleManagement() {
 
               <div className="formGroup">
                 <label className="formLabel">Assign Permissions</label>
-                <div style={{ backgroundColor: '#0f172a', padding: '12px', borderRadius: '6px', maxHeight: '250px', overflowY: 'auto' }}>
-                  {allPermissions.map(permission => (
-                    <label key={permission.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', cursor: 'pointer', color: '#e5e7eb' }}>
-                      <input
-                        type="checkbox"
-                        checked={formData.permissionIds.includes(permission.id)}
-                        onChange={() => handlePermissionToggle(permission.id)}
-                        style={{ marginRight: '10px', cursor: 'pointer', width: '18px', height: '18px' }}
-                      />
-                      <span>
-                        <strong>{permission.displayName}</strong>
-                        <div style={{ fontSize: '12px', color: '#9ca3af' }}>({permission.name})</div>
-                      </span>
-                    </label>
+                <div className="permissionContainer">
+                  {allPermissions.map((permission) => (
+                    <div key={permission.id} className="permissionItem">
+                      <label className={`permissionLabel ${formData.permissionIds.includes(permission.id) ? 'selected' : ''}`}>
+                        <input
+                          type="checkbox"
+                          className="permissionCheckbox"
+                          checked={formData.permissionIds.includes(permission.id)}
+                          onChange={() => handlePermissionToggle(permission.id)}
+                        />
+                        <span className="permissionTextContainer">
+                          <div className="permissionDisplayName">
+                            {permission.displayName}
+                          </div>
+                          <div className="permissionCode">
+                            {permission.name}
+                          </div>
+                        </span>
+                      </label>
+                    </div>
                   ))}
                 </div>
-                <div style={{ marginTop: '10px', fontSize: '12px', color: '#9ca3af' }}>
-                  Selected: {formData.permissionIds.length} permission(s)
+                <div className="permissionCounter">
+                  ✓ Selected: <strong>{formData.permissionIds.length}</strong> permission(s)
                 </div>
               </div>
 

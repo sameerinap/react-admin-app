@@ -1,0 +1,31 @@
+/* Permission Type Badge */
+.permissionTypeBadge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.permissionTypeBadge.typeRead {
+  background-color: #1e40af;
+}
+
+.permissionTypeBadge.typeCreate {
+  background-color: #059669;
+}
+
+.permissionTypeBadge.typeUpdate {
+  background-color: #d97706;
+}
+
+.permissionTypeBadge.typeDelete {
+  background-color: #dc2626;
+}
+
+.permissionTypeBadge.typeDefault {
+  background-color: #6b7280;
+}
