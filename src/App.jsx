@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar'
 import Breadcrumb from './components/Breadcrumb'
 import UserManagement from './components/UserManagement'
 import RoleManagement from './components/RoleManagement'
+import PermissionManagement from './components/PermissionManagement'
 import './App.css'
 
 /**
@@ -119,6 +120,13 @@ function App() {
                   { label: submenuLabels[currentSubmenu] || currentSubmenu, active: true }
                 ]} onNavigate={(page, sub) => { setCurrentPage(page); if(sub) setCurrentSubmenu(sub); }} />
               )}
+              {currentPage === 'permissions' && (
+                <Breadcrumb items={[
+                  { label: 'Home', page: 'home', submenu: 'dashboard' },
+                  { label: 'Users', page: 'userManagement', submenu: 'users' },
+                  { label: submenuLabels[currentSubmenu] || currentSubmenu, active: true }
+                ]} onNavigate={(page, sub) => { setCurrentPage(page); if(sub) setCurrentSubmenu(sub); }} />
+              )}
               {currentPage === 'analytics' && (
                 <Breadcrumb items={[
                   { label: 'Home', page: 'home', submenu: 'dashboard' },
@@ -225,6 +233,11 @@ function App() {
               {/* Roles Page */}
               {currentPage === 'roles' && (
                 <RoleManagement />
+              )}
+
+              {/* Permissions Page */}
+              {currentPage === 'permissions' && (
+                <PermissionManagement />
               )}
             </div>
           </main>

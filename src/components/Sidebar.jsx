@@ -34,7 +34,7 @@ function Sidebar({ isOpen = true, onToggleSidebar, currentPage = 'dashboard', cu
       submenu: [
         { id: 'users', label: 'User List', icon: '👤', page: 'userManagement' },
         { id: 'roles', label: 'Roles', icon: '🏷️', page: 'roles' },
-        { id: 'permissions', label: 'Permissions', icon: '🔐', page: 'userManagement' },
+        { id: 'permissions', label: 'Permissions', icon: '🔐', page: 'permissions' },
       ],
     },
     {

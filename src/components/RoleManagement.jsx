@@ -2,19 +2,31 @@ import { useState } from 'react';
 import './UserManagement.css';
 
 function RoleManagement() {
+  // Master permissions list (from Permission Catalog)
+  const allPermissions = [
+    { id: 1, name: 'user.view', displayName: 'View Users' },
+    { id: 2, name: 'user.create', displayName: 'Create User' },
+    { id: 3, name: 'user.edit', displayName: 'Edit User' },
+    { id: 4, name: 'user.delete', displayName: 'Delete User' },
+    { id: 5, name: 'report.view', displayName: 'View Reports' },
+    { id: 6, name: 'report.create', displayName: 'Generate Report' },
+    { id: 7, name: 'config.manage', displayName: 'System Configuration' },
+    { id: 8, name: 'audit.view', displayName: 'View Audit Logs' },
+  ];
+
   const [roles, setRoles] = useState([
-    { id: 1, name: 'Admin', description: 'Full system access', permissions: 'All', status: 'Active', createdDate: '2024-01-10' },
-    { id: 2, name: 'Manager', description: 'User and report management', permissions: 'Read/Write Users, Reports', status: 'Active', createdDate: '2024-01-15' },
-    { id: 3, name: 'User', description: 'Basic user access', permissions: 'Read Data', status: 'Active', createdDate: '2024-01-20' },
-    { id: 4, name: 'Viewer', description: 'Read-only access', permissions: 'Read Only', status: 'Active', createdDate: '2024-02-01' },
-    { id: 5, name: 'Moderator', description: 'Content moderation', permissions: 'Read/Write/Delete Content', status: 'Inactive', createdDate: '2024-02-15' },
+    { id: 1, name: 'Admin', description: 'Full system access', permissionIds: [1, 2, 3, 4, 5, 6, 7, 8], status: 'Active', createdDate: '2024-01-10' },
+    { id: 2, name: 'Manager', description: 'User and report management', permissionIds: [1, 2, 3, 5, 6], status: 'Active', createdDate: '2024-01-15' },
+    { id: 3, name: 'User', description: 'Basic user access', permissionIds: [1, 5], status: 'Active', createdDate: '2024-01-20' },
+    { id: 4, name: 'Viewer', description: 'Read-only access', permissionIds: [1, 5, 8], status: 'Active', createdDate: '2024-02-01' },
+    { id: 5, name: 'Moderator', description: 'Content moderation', permissionIds: [1, 3, 5], status: 'Inactive', createdDate: '2024-02-15' },
   ]);
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
-    permissions: '',
+    permissionIds: [],
     status: 'Active'
   });
   const [editingId, setEditingId] = useState(null);
@@ -22,7 +34,7 @@ function RoleManagement() {
 
   const handleAddClick = () => {
     setEditingId(null);
-    setFormData({ name: '', description: '', permissions: '', status: 'Active' });
+    setFormData({ name: '', description: '', permissionIds: [], status: 'Active' });
     setShowAddModal(true);
   };
 
@@ -31,7 +43,7 @@ function RoleManagement() {
     setFormData({
       name: role.name,
       description: role.description,
-      permissions: role.permissions,
+      permissionIds: [...role.permissionIds],
       status: role.status
     });
     setShowAddModal(true);
@@ -63,6 +75,15 @@ function RoleManagement() {
     }));
   };
 
+  const handlePermissionToggle = (permissionId) => {
+    setFormData(prev => {
+      const newPermissions = prev.permissionIds.includes(permissionId)
+        ? prev.permissionIds.filter(id => id !== permissionId)
+        : [...prev.permissionIds, permissionId];
+      return { ...prev, permissionIds: newPermissions };
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -82,19 +103,26 @@ function RoleManagement() {
     }
     
     setShowAddModal(false);
-    setFormData({ name: '', description: '', permissions: '', status: 'Active' });
+    setFormData({ name: '', description: '', permissionIds: [], status: 'Active' });
   };
 
   const handleCancel = () => {
     setShowAddModal(false);
-    setFormData({ name: '', description: '', permissions: '', status: 'Active' });
+    setFormData({ name: '', description: '', permissionIds: [], status: 'Active' });
     setEditingId(null);
+  };
+
+  const getPermissionNames = (permissionIds) => {
+    return permissionIds
+      .map(id => allPermissions.find(p => p.id === id)?.displayName)
+      .filter(Boolean)
+      .join(', ');
   };
 
   return (
     <div className="userManagement">
       <div className="userManagementHeader">
-        <h1 className="userManagementTitle">Role Management</h1>
+        <h1 className="userManagementTitle">Role Management (RBAC)</h1>
         <button 
           className="addUserButton"
           onClick={handleAddClick}
@@ -111,7 +139,7 @@ function RoleManagement() {
               <th className="userTableCell">ID</th>
               <th className="userTableCell">Role Name</th>
               <th className="userTableCell">Description</th>
-              <th className="userTableCell">Permissions</th>
+              <th className="userTableCell">Assigned Permissions</th>
               <th className="userTableCell">Status</th>
               <th className="userTableCell">Created Date</th>
               <th className="userTableCell">Actions</th>
@@ -123,7 +151,16 @@ function RoleManagement() {
                 <td className="userTableCell">{role.id}</td>
                 <td className="userTableCell userNameCell">{role.name}</td>
                 <td className="userTableCell">{role.description}</td>
-                <td className="userTableCell">{role.permissions}</td>
+                <td className="userTableCell" style={{ fontSize: '12px' }}>
+                  <span style={{ 
+                    backgroundColor: 'rgba(100, 200, 255, 0.1)', 
+                    padding: '4px 8px', 
+                    borderRadius: '4px',
+                    color: '#64c8ff'
+                  }}>
+                    {role.permissionIds.length} permission(s)
+                  </span>
+                </td>
                 <td className="userTableCell">
                   <span className={`statusBadge statusBadge${role.status}`}>{role.status}</span>
                 </td>
@@ -132,7 +169,7 @@ function RoleManagement() {
                   <button 
                     className="actionButton editButton"
                     onClick={() => handleEditClick(role)}
-                    title="Edit role"
+                    title="Edit role and permissions"
                   >
                     ✏️
                   </button>
@@ -152,9 +189,9 @@ function RoleManagement() {
 
       {showAddModal && (
         <div className="modalOverlay" onClick={handleCancel}>
-          <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+          <div className="modalContent" onClick={(e) => e.stopPropagation()} style={{ maxHeight: '80vh', overflowY: 'auto' }}>
             <h2 className="modalTitle">
-              {editingId ? 'Edit Role' : 'Add New Role'}
+              {editingId ? 'Edit Role & Permissions' : 'Add New Role'}
             </h2>
 
             <form className="userForm" onSubmit={handleSubmit}>
@@ -185,16 +222,26 @@ function RoleManagement() {
               </div>
 
               <div className="formGroup">
-                <label className="formLabel">Permissions</label>
-                <input
-                  type="text"
-                  name="permissions"
-                  className="formInput"
-                  value={formData.permissions}
-                  onChange={handleInputChange}
-                  placeholder="Enter permissions (comma-separated)"
-                  required
-                />
+                <label className="formLabel">Assign Permissions</label>
+                <div style={{ backgroundColor: '#0f172a', padding: '12px', borderRadius: '6px', maxHeight: '250px', overflowY: 'auto' }}>
+                  {allPermissions.map(permission => (
+                    <label key={permission.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', cursor: 'pointer', color: '#e5e7eb' }}>
+                      <input
+                        type="checkbox"
+                        checked={formData.permissionIds.includes(permission.id)}
+                        onChange={() => handlePermissionToggle(permission.id)}
+                        style={{ marginRight: '10px', cursor: 'pointer', width: '18px', height: '18px' }}
+                      />
+                      <span>
+                        <strong>{permission.displayName}</strong>
+                        <div style={{ fontSize: '12px', color: '#9ca3af' }}>({permission.name})</div>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+                <div style={{ marginTop: '10px', fontSize: '12px', color: '#9ca3af' }}>
+                  Selected: {formData.permissionIds.length} permission(s)
+                </div>
               </div>
 
               <div className="formGroup">
@@ -258,8 +305,8 @@ function RoleManagement() {
           <span className="statValue">{roles.filter(r => r.status === 'Active').length}</span>
         </div>
         <div className="statCard">
-          <span className="statLabel">Inactive Roles</span>
-          <span className="statValue">{roles.filter(r => r.status === 'Inactive').length}</span>
+          <span className="statLabel">Total Permissions</span>
+          <span className="statValue">{allPermissions.length}</span>
         </div>
       </div>
     </div>
