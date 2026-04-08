@@ -10,9 +10,9 @@ BEM Structure:
 
 /* ===== FOOTER BLOCK: Main Footer ===== */
 .footer {
-  background: linear-gradient(135deg, var(--text-h) 0%, #2a1f35 100%);
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
   color: rgba(255, 255, 255, 0.9);
-  border-top: 1px solid rgba(170, 59, 255, 0.2);
+  border-top: 1px solid var(--border);
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
@@ -83,19 +83,20 @@ BEM Structure:
   justify-content: center;
   width: 36px;
   height: 36px;
-  background-color: rgba(170, 59, 255, 0.2);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--accent);
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
   font-size: 14px;
   transition: all 0.3s ease;
-  border: 1px solid rgba(170, 59, 255, 0.3);
+  border: 1px solid var(--border);
 }
 
 .footerSocialLink:hover {
   background-color: var(--accent);
   border-color: var(--accent);
+  color: var(--primary);
   transform: translateY(-2px);
 }
 

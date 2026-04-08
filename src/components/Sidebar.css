@@ -9,8 +9,8 @@
   top: 65px;
   height: calc(100vh - 65px);
   width: 280px;
-  background: #1a2332;
-  border-right: 1px solid #2a3f5f;
+  background: var(--primary);
+  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
@@ -18,6 +18,26 @@
   overflow-y: auto;
   overflow-x: hidden;
   transition: width 0.3s ease;
+}
+
+/* SIDEBAR SCROLLBAR */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-bg) 100%);
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accent-bg) 0%, var(--accent) 100%);
 }
 
 /* SIDEBAR NAVIGATION */
@@ -48,7 +68,7 @@
   padding: 14px 16px;
   background: transparent;
   border: none;
-  color: #9ca3af;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
@@ -62,25 +82,25 @@
 
 /* SIDEBAR LINK HOVER STATE */
 .sidebarLink:hover {
-  background-color: rgba(100, 200, 255, 0.1);
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text);
 }
 
 /* SIDEBAR LINK EXPANDED STATE (When submenu is open) */
 .sidebarLinkExpanded {
-  background: linear-gradient(90deg, rgba(100, 200, 255, 0.15) 0%, transparent 100%);
-  color: #ffffff;
-  border-left: 3px solid #00d4ff;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+  color: var(--text);
+  border-left: 3px solid var(--accent);
   padding-left: 13px;
 }
 
 /* SIDEBAR LINK ACTIVE STATE (Current Page) */
 .sidebarLinkActive {
-  background: linear-gradient(90deg, rgba(100, 200, 255, 0.2) 0%, transparent 100%);
-  color: #64c8ff;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  color: var(--accent);
   border-left: 3px solid var(--accent);
   padding-left: 13px;
-  box-shadow: inset 0 0 15px rgba(100, 200, 255, 0.1);
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
 /* SIDEBAR ICON */
@@ -90,7 +110,7 @@
   align-items: center;
   justify-content: center;
   min-width: 24px;
-  color: #64c8ff;
+  color: var(--accent);
 }
 
 /* SIDEBAR LINK LABEL */
@@ -111,7 +131,7 @@
   height: 16px;
   transition: transform 0.3s ease;
   transform: rotate(0deg);
-  color: #64c8ff;
+  color: var(--accent);
   margin-left: auto;
   flex-shrink: 0;
 }
@@ -129,7 +149,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.03);
   max-height: 500px;
   overflow: hidden;
   animation: slideDown 0.3s ease;
@@ -162,7 +182,7 @@
   padding: 11px 16px 11px 48px;
   background: transparent;
   border: none;
-  color: #7c8d9f;
+  color: rgba(255, 255, 255, 0.5);
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -173,16 +193,16 @@
 
 /* SUBMENU LINK HOVER STATE */
 .sidebarSubmenuLink:hover {
-  background-color: rgba(100, 200, 255, 0.08);
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text);
   padding-left: 52px;
 }
 
 /* SUBMENU LINK ACTIVE STATE */
 .sidebarSubmenuLinkActive {
-  background: linear-gradient(90deg, rgba(100, 200, 255, 0.15) 0%, transparent 100%);
-  color: #64c8ff;
-  border-left: 2px solid #00d4ff;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
   padding-left: 46px;
   font-weight: 600;
 }
@@ -194,7 +214,7 @@
   align-items: center;
   justify-content: center;
   min-width: 18px;
-  color: #5a7a9e;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* SUBMENU LABEL */
@@ -229,15 +249,15 @@
 /* SIDEBAR FOOTER */
 .sidebarFooter {
   padding: 20px;
-  border-top: 1px solid #0f3460;
-  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 /* SIDEBAR VERSION TEXT */
 .sidebarVersion {
   margin: 0;
   font-size: 12px;
-  color: #666;
+  color: rgba(255, 255, 255, 0.4);
   text-align: center;
   font-weight: 500;
 }

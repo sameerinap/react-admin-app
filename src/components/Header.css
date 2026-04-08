@@ -53,7 +53,7 @@ Structure:
 
 /* ===== TOGGLE BUTTON: Collapse/Expand Sidebar ===== */
 .headerToggle {
-  background: #262641;
+  background: var(--secondary);
   border: 2px solid var(--accent);
   color: var(--accent);
   font-size: 20px;
@@ -71,7 +71,7 @@ Structure:
 
 .headerToggle:hover {
   background: var(--accent);
-  color: #1a1a2e;
+  color: var(--primary);
   border-color: var(--accent);
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(100, 200, 255, 0.4);
@@ -182,7 +182,7 @@ Structure:
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #1a1a2e;
+  border: 2px solid var(--primary);
 }
 
 /* ===== HEADER INFO: User Profile Display ===== */
@@ -191,7 +191,7 @@ Structure:
   align-items: center;
   gap: 8px;
   padding: 6px 10px;
-  background: #262641;
+  background: var(--secondary);
   border-radius: 6px;
   /* border: 2px solid var(--accent); */
   box-shadow: 0 2px 8px rgba(100, 200, 255, 0.2);
