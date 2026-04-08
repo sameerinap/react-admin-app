@@ -166,11 +166,21 @@ function UserManagement() {
 
       {/* Add/Edit User Modal */}
       {showAddModal && (
-        <div className="modalOverlay" onClick={handleCancel}>
+        <div className="modalOverlay">
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-            <h2 className="modalTitle">
-              {editingId ? 'Edit User' : 'Add New User'}
-            </h2>
+            <div className="modalHeader">
+              <h2 className="modalTitle">
+                {editingId ? 'Edit User' : 'Add New User'}
+              </h2>
+              <button 
+                type="button"
+                className="modalCloseButton"
+                onClick={handleCancel}
+                title="Close"
+              >
+                ✕
+              </button>
+            </div>
 
             <form className="userForm" onSubmit={handleSubmit}>
               <div className="formGroup">

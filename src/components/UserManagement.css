@@ -246,6 +246,47 @@
   margin: 0 0 25px 0;
 }
 
+/* Modal Header */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modalHeader .modalTitle {
+  margin: 0;
+  flex: 1;
+  font-size: 20px;
+}
+
+/* Modal Close Button */
+.modalCloseButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.modalCloseButton:hover {
+  background-color: rgba(255, 65, 78, 0.1);
+  color: #ff414e;
+}
+
+.modalCloseButton:active {
+  transform: scale(0.95);
+}
+
 /* ===== FORM STYLES ===== */
 .userForm {
   display: flex;
