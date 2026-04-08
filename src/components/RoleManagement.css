@@ -167,7 +167,7 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #9ca3af;
+  color: var(--text);
   padding: 0;
   width: 32px;
   height: 32px;
@@ -243,7 +243,7 @@
   background-color: rgba(100, 200, 255, 0.1);
   padding: 4px 8px;
   border-radius: 4px;
-  color: #64c8ff;
+  color: var(--accent);
   font-weight: 500;
   display: inline-block;
 }

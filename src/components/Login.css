@@ -97,7 +97,7 @@ Why BEM? Makes the code scalable and maintainable
 
 .logoTitle {
   margin: 0;
-  color: white;
+  color: var(--text);
   font-size: 32px;
   font-weight: 700;
   text-align: center;
@@ -105,7 +105,7 @@ Why BEM? Makes the code scalable and maintainable
 
 .logoSubtitle {
   margin: 0;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text);
   font-size: 14px;
   text-align: center;
 }
@@ -288,7 +288,7 @@ Why BEM? Makes the code scalable and maintainable
   padding: 14px;
   background: linear-gradient(135deg, #666666 0%, #999999 100%);
   background: linear-gradient(135deg, var(--accent, #666666) 0%, var(--accent-bg, #999999) 100%);
-  color: white;
+  color: var(--primary);
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   font-size: 16px;
@@ -444,7 +444,7 @@ Why BEM? Makes the code scalable and maintainable
   margin-top: -8px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  border-top-color: white;
+  border-top-color: var(--accent);
   animation: loginSpin 0.8s linear infinite;
 }
 

@@ -10,15 +10,15 @@ Structure:
 
 /* ===== HEADER BLOCK: Main Header ===== */
 .header {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bg) 100%);
-  color: white;
+  background: var(--primary);
+  color: var(--text);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border-bottom: 2px solid var(--accent);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  /* z-index: 1000; */
   width: 100%;
   overflow: visible;
   height: 65px;
@@ -30,7 +30,7 @@ Structure:
 
 /* ===== HEADER BRAND BOX: Logo/Title Section (Left aligned) ===== */
 .headerBrand {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bg) 100%);
+  background: var(--primary);
   border-right: 2px solid var(--accent);
   padding: 10px 20px;
   display: flex;
@@ -64,7 +64,7 @@ Structure:
   justify-content: center;
   transition: all 0.3s ease;
   flex-shrink: 0;
-  margin-right: 8px;
+  margin-right: 0px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(100, 200, 255, 0.2);
 }
@@ -87,6 +87,8 @@ Structure:
   flex-direction: column;
   gap: 2px;
   flex: 1;
+  margin-left: 10px;
+  color: var(--text);
 }
 
 .headerBrandClosed .headerBrandContent {
@@ -97,7 +99,7 @@ Structure:
   margin: 0;
   font-size: 16px;
   font-weight: 700;
-  color: white;
+  color: var(--text);
   white-space: nowrap;
 }
 
@@ -108,7 +110,6 @@ Structure:
   font-weight: 500;
   white-space: nowrap;
   letter-spacing: 0.3px;
-  color: white;;
 }
 
 /* ===== HEADER CONTAINER: Dynamic Width Container ===== */
@@ -173,7 +174,7 @@ Structure:
   top: -6px;
   right: -6px;
   background: #ff4444;
-  color: white;
+  color: var(--text);
   font-size: 8px;
   font-weight: 600;
   width: 18px;
@@ -218,7 +219,7 @@ Structure:
   margin: 0;
   font-size: 12px;
   font-weight: 600;
-  color: white;
+  color: var(--text);
 }
 
 .headerEmail {
@@ -232,7 +233,7 @@ Structure:
 .headerButton {
   padding: 8px 18px;
   background: var(--accent);
-  color: #1a1a2e;
+  color: var(--primary);
   border: 2px solid var(--accent);
   border-radius: 6px;
   font-size: 12px;
