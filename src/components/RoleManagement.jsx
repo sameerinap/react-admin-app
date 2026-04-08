@@ -152,13 +152,8 @@ function RoleManagement() {
                 <td className="userTableCell">{role.id}</td>
                 <td className="userTableCell userNameCell">{role.name}</td>
                 <td className="userTableCell">{role.description}</td>
-                <td className="userTableCell" style={{ fontSize: '12px' }}>
-                  <span style={{ 
-                    backgroundColor: 'rgba(100, 200, 255, 0.1)', 
-                    padding: '4px 8px', 
-                    borderRadius: '4px',
-                    color: '#64c8ff'
-                  }}>
+                <td className="userTableCell permissionCountCell">
+                  <span className="permissionCountBadge">
                     {role.permissionIds.length} permission(s)
                   </span>
                 </td>
@@ -189,11 +184,21 @@ function RoleManagement() {
       </div>
 
       {showAddModal && (
-        <div className="modalOverlay" onClick={handleCancel}>
-          <div className="modalContent" onClick={(e) => e.stopPropagation()} style={{ maxHeight: '80vh', overflowY: 'auto' }}>
-            <h2 className="modalTitle">
-              {editingId ? 'Edit Role & Permissions' : 'Add New Role'}
-            </h2>
+        <div className="modalOverlay">
+          <div className="modalContent modalContentScroll" onClick={(e) => e.stopPropagation()}>
+            <div className="modalHeader">
+              <h2 className="modalTitle">
+                {editingId ? 'Edit Role & Permissions' : 'Add New Role'}
+              </h2>
+              <button 
+                type="button"
+                className="modalCloseButton"
+                onClick={handleCancel}
+                title="Close"
+              >
+                ✕
+              </button>
+            </div>
 
             <form className="userForm" onSubmit={handleSubmit}>
               <div className="formGroup">

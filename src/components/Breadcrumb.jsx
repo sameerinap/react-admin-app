@@ -31,7 +31,6 @@ function Breadcrumb({ items = [], onNavigate }) {
           <span 
             className={`breadcrumbItem ${item.active ? 'active' : ''}`}
             onClick={() => handleClick(item.page, item.submenu, item.active)}
-            style={{ cursor: item.active ? 'default' : 'pointer' }}
           >
             {item.label}
           </span>

@@ -111,3 +111,68 @@
   color: #00d4ff;
   font-weight: 700;
 }
+
+/* Modal Header */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modalHeader .modalTitle {
+  margin: 0;
+  flex: 1;
+}
+
+/* Modal Close Button */
+.modalCloseButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.modalCloseButton:hover {
+  background-color: rgba(255, 65, 78, 0.1);
+  color: #ff414e;
+}
+
+.modalCloseButton:active {
+  transform: scale(0.95);
+}
+
+/* Modal Content Scroll */
+.modalContentScroll {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Permission Count Cell */
+.permissionCountCell {
+  font-size: 12px;
+}
+
+/* Permission Count Badge */
+.permissionCountBadge {
+  background-color: rgba(100, 200, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #64c8ff;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.modalCloseButton:active {
+  transform: scale(0.95);
+}

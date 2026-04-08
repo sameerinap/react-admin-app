@@ -172,11 +172,21 @@ function PermissionManagement() {
       </div>
 
       {showAddModal && (
-        <div className="modalOverlay" onClick={handleCancel}>
+        <div className="modalOverlay">
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-            <h2 className="modalTitle">
-              {editingId ? 'Edit Permission' : 'Add New Permission'}
-            </h2>
+            <div className="modalHeader">
+              <h2 className="modalTitle">
+                {editingId ? 'Edit Permission' : 'Add New Permission'}
+              </h2>
+              <button 
+                type="button"
+                className="modalCloseButton"
+                onClick={handleCancel}
+                title="Close"
+              >
+                ✕
+              </button>
+            </div>
 
             <form className="userForm" onSubmit={handleSubmit}>
               <div className="formGroup">
