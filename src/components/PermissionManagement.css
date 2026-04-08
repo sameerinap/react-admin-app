@@ -1,3 +1,39 @@
+/* Form Input Styling */
+.formInput {
+  padding: 8px 10px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.formInput:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #00d4ff;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15);
+}
+
+.formInput:hover:not(:focus) {
+  border-color: rgba(100, 200, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.formInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.formInput option {
+  background: #1a1a2e;
+  color: white;
+  padding: 6px 10px;
+}
+
 /* Permission Type Badge */
 .permissionTypeBadge {
   padding: 4px 8px;

@@ -231,24 +231,38 @@ Why BEM? Makes the code scalable and maintainable
 
 /* ===== LOGIN INPUT: Input Field ===== */
 .loginInput {
-  padding: 12px 16px;
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  font-family: var(--sans);
+  padding: 8px 10px;
+  height: 34px;
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
 }
 
 .loginInput:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-bg);
+  border-color: #00d4ff;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15);
+}
+
+.loginInput:hover:not(:focus) {
+  border-color: rgba(100, 200, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .loginInput:disabled {
-  background-color: var(--code-bg);
+  background-color: rgba(255, 255, 255, 0.05);
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+.loginInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 
 /* ===== LOGIN ERROR: Error Message ===== */
