@@ -2,7 +2,7 @@
 
 /* ===== MAIN CONTAINER ===== */
 .userManagement {
-  background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 100%);
+  /* background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 100%); */
   min-height: calc(100vh - 65px);
   color: white;
 }
@@ -175,7 +175,7 @@
 
 .actionButton {
   padding: 3px 6px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 3px;
   font-size: 9px;
   font-weight: 600;
@@ -189,27 +189,32 @@
 }
 
 .editButton {
-  background: rgba(100, 200, 255, 0.2);
-  color: #64c8ff;
-  border: 1px solid rgba(100, 200, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--accent) !important;
+  box-shadow: none !important;
 }
 
 .editButton:hover {
-  background: rgba(100, 200, 255, 0.3);
-  border-color: rgba(100, 200, 255, 0.5);
-  transform: scale(1.01);
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px var(--accent) !important;
 }
 
 .deleteButton {
-  background: rgba(255, 107, 107, 0.2);
-  color: #ff6b6b;
-  border: 1px solid rgba(255, 107, 107, 0.3);
+  background: rgba(255, 107, 107, 0.2) !important;
+  color: #ff6b6b !important;
+  border: 1px solid rgba(255, 107, 107, 0.3) !important;
+  box-shadow: none !important;
 }
 
 .deleteButton:hover {
-  background: rgba(255, 107, 107, 0.3);
-  border-color: rgba(255, 107, 107, 0.5);
+  background: rgba(255, 107, 107, 0.3) !important;
+  border-color: rgba(255, 107, 107, 0.5) !important;
   transform: scale(1.01);
+  box-shadow: none !important;
 }
 
 /* ===== MODAL STYLES ===== */
@@ -228,8 +233,8 @@
 }
 
 .modalContent {
-  background: linear-gradient(135deg, #1a1a2e 0%, #262641 100%);
-  border: 1px solid rgba(100, 200, 255, 0.3);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border: 1px solid var(--border);
   border-radius: 12px;
   max-width: 500px;
   width: 90%;
@@ -258,19 +263,19 @@
 }
 
 .modalBody::-webkit-scrollbar-track {
-  background: rgba(0, 212, 255, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin: 10px 0;
 }
 
 .modalBody::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00d4ff 0%, #00b8cc 100%);
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-bg) 100%);
   border-radius: 10px;
-  border: 2px solid rgba(0, 212, 255, 0.2);
+  border: 2px solid var(--border);
 }
 
 .modalBody::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #00e8ff 0%, #00d4ff 100%);
+  background: linear-gradient(180deg, var(--accent-bg) 0%, var(--accent) 100%);
 }
 }
 
@@ -338,7 +343,7 @@
 .formLabel {
   font-size: 14px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
@@ -347,9 +352,9 @@
   padding: 8px 10px;
   height: 34px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(100, 200, 255, 0.3);
+  border: 1px solid var(--border);
   border-radius: 5px;
-  color: white;
+  color: var(--text);
   font-size: 12px;
   line-height: 1.4;
   transition: all 0.2s ease;
@@ -359,12 +364,12 @@
 .formInput:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.12);
-  border-color: #00d4ff;
-  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .formInput:hover:not(:focus) {
-  border-color: rgba(100, 200, 255, 0.5);
+  border-color: var(--accent);
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -373,8 +378,8 @@
 }
 
 .formInput option {
-  background: #1a1a2e;
-  color: white;
+  background: var(--primary);
+  color: var(--text);
   padding: 6px 10px;
 }
 
@@ -407,8 +412,8 @@
   flex: 1;
   padding: 12px 20px;
   background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(100, 200, 255, 0.2);
+  color: var(--text);
+  border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
@@ -558,23 +563,9 @@
 }
 
 /* ===== DELETE CONFIRMATION MODAL ===== */
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  backdrop-filter: blur(4px);
-}
-
 .deleteConfirmModal {
-  background: linear-gradient(135deg, #1a1a2e 0%, #262641 100%);
-  border: 1px solid rgba(100, 200, 255, 0.3);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border: 1px solid var(--border);
   border-radius: 12px;
   max-width: 400px;
   width: 90%;
@@ -598,14 +589,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid rgba(100, 200, 255, 0.2);
+  border-bottom: 1px solid var(--border);
 }
 
 .deleteModalTitle {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
-  color: white;
+  color: var(--text);
 }
 
 .deleteModalClose {
@@ -636,12 +627,12 @@
 .deleteModalMessage {
   margin: 0 0 12px 0;
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
   line-height: 1.5;
 }
 
 .deleteModalMessage strong {
-  color: white;
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -656,7 +647,7 @@
   display: flex;
   gap: 12px;
   padding: 20px;
-  border-top: 1px solid rgba(100, 200, 255, 0.2);
+  border-top: 1px solid var(--border);
 }
 
 .deleteModalCancel,
@@ -674,12 +665,12 @@
 .deleteModalCancel {
   background: rgba(100, 200, 255, 0.1);
   color: var(--accent);
-  border: 1px solid rgba(100, 200, 255, 0.3);
+  border: 1px solid var(--border);
 }
 
 .deleteModalCancel:hover {
   background: rgba(100, 200, 255, 0.2);
-  border-color: rgba(100, 200, 255, 0.5);
+  border-color: var(--accent);
   transform: translateY(-1px);
 }
 

@@ -3,9 +3,9 @@
   padding: 8px 10px;
   height: 34px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(100, 200, 255, 0.3);
+  border: 1px solid var(--border);
   border-radius: 5px;
-  color: white;
+  color: var(--text);
   font-size: 12px;
   line-height: 1.4;
   transition: all 0.2s ease;
@@ -15,12 +15,12 @@
 .formInput:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.12);
-  border-color: #00d4ff;
-  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .formInput:hover:not(:focus) {
-  border-color: rgba(100, 200, 255, 0.5);
+  border-color: var(--accent);
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -29,15 +29,15 @@
 }
 
 .formInput option {
-  background: #1a1a2e;
-  color: white;
+  background: var(--primary);
+  color: var(--text);
   padding: 6px 10px;
 }
 
 /* Permission Container */
 .permissionContainer {
-  background-color: #1a2942;
-  border: 1px solid #2d3f5b;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
   padding: 16px;
   border-radius: 8px;
   max-height: 280px;
@@ -49,17 +49,17 @@
 }
 
 .permissionContainer::-webkit-scrollbar-track {
-  background: rgba(0, 212, 255, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
 
 .permissionContainer::-webkit-scrollbar-thumb {
-  background: #00d4ff;
+  background: var(--accent);
   border-radius: 3px;
 }
 
 .permissionContainer::-webkit-scrollbar-thumb:hover {
-  background: #00b8cc;
+  background: var(--accent-bg);
 }
 
 /* Permission Item Wrapper */
@@ -86,13 +86,13 @@
 }
 
 .permissionLabel:hover {
-  background-color: rgba(0, 212, 255, 0.05);
-  border-color: rgba(0, 212, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
 }
 
 .permissionLabel.selected {
-  background-color: rgba(0, 212, 255, 0.1);
-  border-color: rgba(0, 212, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent);
 }
 
 /* Permission Checkbox */
@@ -102,7 +102,7 @@
   cursor: pointer;
   width: 20px;
   height: 20px;
-  accent-color: #00d4ff;
+  accent-color: var(--accent);
   flex-shrink: 0;
 }
 
@@ -115,19 +115,19 @@
 .permissionDisplayName {
   font-size: 14px;
   font-weight: 600;
-  color: #e5e7eb;
+  color: var(--text);
   margin-bottom: 4px;
   transition: color 0.2s ease;
 }
 
 .permissionLabel.selected .permissionDisplayName {
-  color: #00d4ff;
+  color: var(--accent);
 }
 
 /* Permission Code */
 .permissionCode {
   font-size: 13px;
-  color: #9ca3af;
+  color: rgba(255, 255, 255, 0.6);
   font-family: 'Courier New', monospace;
   letter-spacing: 0.5px;
 }
@@ -136,7 +136,7 @@
 .permissionCounter {
   margin-top: 12px;
   font-size: 13px;
-  color: #64c8ff;
+  color: var(--accent);
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -144,7 +144,7 @@
 }
 
 .permissionCounter strong {
-  color: #00d4ff;
+  color: var(--accent);
   font-weight: 700;
 }
 
@@ -218,19 +218,19 @@
 }
 
 .modalBody::-webkit-scrollbar-track {
-  background: rgba(0, 212, 255, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin: 10px 0;
 }
 
 .modalBody::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00d4ff 0%, #00b8cc 100%);
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-bg) 100%);
   border-radius: 10px;
-  border: 2px solid rgba(0, 212, 255, 0.2);
+  border: 2px solid var(--border);
 }
 
 .modalBody::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #00e8ff 0%, #00d4ff 100%);
+  background: linear-gradient(180deg, var(--accent-bg) 0%, var(--accent) 100%);
 }
 
 /* Permission Count Cell */

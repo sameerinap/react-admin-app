@@ -7,6 +7,8 @@ import Breadcrumb from './components/Breadcrumb'
 import UserManagement from './components/UserManagement'
 import RoleManagement from './components/RoleManagement'
 import PermissionManagement from './components/PermissionManagement'
+import Settings from './components/Settings'
+import { ThemeProvider } from './context/ThemeContext'
 import './App.css'
 
 /**
@@ -89,7 +91,8 @@ function App() {
         <Login onLogin={handleLogin} />
       ) : (
         // MAIN LAYOUT: Shows when user is logged in
-        <div className={`mainLayout ${sidebarOpen ? 'mainLayoutOpen' : 'mainLayoutClosed'}`}>
+        <ThemeProvider>
+          <div className={`mainLayout ${sidebarOpen ? 'mainLayoutOpen' : 'mainLayoutClosed'}`}>
           {/* Header - Fixed at top */}
           <Header user={user} onLogout={handleLogout} sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
@@ -239,12 +242,18 @@ function App() {
               {currentPage === 'permissions' && (
                 <PermissionManagement />
               )}
+
+              {/* Settings Page */}
+              {currentPage === 'settings' && (
+                <Settings currentSubmenu={currentSubmenu} onSubmenuChange={setCurrentSubmenu} />
+              )}
             </div>
           </main>
 
           {/* Footer - Fixed at bottom */}
           <Footer sidebarOpen={sidebarOpen} />
-        </div>
+          </div>
+        </ThemeProvider>
       )}
     </div>
   );

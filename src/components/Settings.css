@@ -1,0 +1,259 @@
+/* SETTINGS PAGE STYLES */
+
+.settings {
+  background: var(--bg);
+  min-height: calc(100vh - 65px);
+  color: var(--text);
+  padding: 20px;
+}
+
+/* ===== SETTINGS HEADER ===== */
+.settingsHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 0 10px;
+}
+
+.settingsTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* ===== SETTINGS CONTAINER ===== */
+.settingsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 1000px;
+}
+
+/* ===== SETTINGS SECTION ===== */
+.settingsSection {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+  padding: 18px 24px;
+  background: rgba(0, 212, 255, 0.08);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.sectionContent {
+  padding: 24px;
+}
+
+/* ===== SETTING GROUP ===== */
+.settingGroup {
+  margin-bottom: 24px;
+}
+
+.settingGroup:last-child {
+  margin-bottom: 0;
+}
+
+.settingLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settingDescription {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: -8px 0 16px 0;
+  line-height: 1.5;
+}
+
+.settingCheckbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+/* ===== THEME GRID ===== */
+.themeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* ===== THEME CARD ===== */
+.themeCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(100, 200, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.themeCard:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(100, 200, 255, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2);
+}
+
+.themeCard.active {
+  border-color: var(--accent);
+  background: rgba(0, 212, 255, 0.15);
+}
+
+.themePreview {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.themeColorPrimary,
+.themeColorAccent {
+  flex: 1;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.themeCard:hover .themeColorPrimary,
+.themeCard:hover .themeColorAccent {
+  transform: scale(1.05);
+}
+
+.themeName {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  word-break: break-word;
+}
+
+.themeCheckmark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--accent);
+  color: var(--primary);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ===== CURRENT THEME INFO ===== */
+.currentThemeInfo {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.themeInfoItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.themeInfoLabel {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  min-width: 130px;
+}
+
+.themeInfoValue {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.colorDisplay {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(100, 200, 255, 0.3);
+}
+
+.colorCode {
+  font-family: 'Courier New', monospace;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+/* ===== ABOUT SECTION ===== */
+.aboutInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.aboutInfo p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.aboutInfo strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .settings {
+    padding: 12px;
+  }
+
+  .settingsTitle {
+    font-size: 22px;
+  }
+
+  .themeGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+
+  .sectionContent {
+    padding: 16px;
+  }
+
+  .themePreview {
+    height: 50px;
+  }
+}
