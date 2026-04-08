@@ -112,9 +112,10 @@ Why BEM? Makes the code scalable and maintainable
 
 /* ===== LOGIN CARD: Main Card Element ===== */
 .loginCard {
-  background: #18202e;
+  background: var(--primary);
+  border: 2px solid var(--border);
   border-radius: 12px;
-  box-shadow: var(--shadow), 0 4px 6px rgba(170, 59, 255, 0.15);
+  box-shadow: var(--shadow), 0 4px 6px rgba(0, 0, 0, 0.2);
   padding: 40px;
   max-width: 400px;
   width: 100%;
@@ -196,7 +197,7 @@ Why BEM? Makes the code scalable and maintainable
 
 .loginTitle {
   margin: 0;
-  color: #566fa3;
+  color: var(--text);
   font-size: 28px;
   margin-bottom: 8px;
   font-weight: 700;
@@ -204,7 +205,7 @@ Why BEM? Makes the code scalable and maintainable
 
 .loginSubtitle {
   margin: 0;
-  color: var(--accent);
+  color: var(--text);
   font-size: 14px;
   font-weight: 500;
 }
@@ -225,7 +226,7 @@ Why BEM? Makes the code scalable and maintainable
 
 .loginLabel {
   font-weight: 600;
-  color: var(--text-h);
+  color: var(--text);
   font-size: 14px;
 }
 
@@ -233,26 +234,26 @@ Why BEM? Makes the code scalable and maintainable
 .loginInput {
   padding: 8px 10px;
   height: 34px;
-  border: 1px solid rgba(100, 200, 255, 0.3);
+  border: 1px solid var(--border);
   border-radius: 5px;
   font-size: 12px;
   line-height: 1.4;
   transition: all 0.2s ease;
   font-family: inherit;
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text);
 }
 
 .loginInput:focus {
   outline: none;
-  border-color: #00d4ff;
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
 }
 
 .loginInput:hover:not(:focus) {
-  border-color: rgba(100, 200, 255, 0.5);
-  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .loginInput:disabled {
@@ -262,14 +263,14 @@ Why BEM? Makes the code scalable and maintainable
 }
 
 .loginInput::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* ===== LOGIN ERROR: Error Message ===== */
 .loginError {
-  background-color: #fee;
-  border: 1px solid #f88;
-  color: #c33;
+  background-color: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  color: #dc3545;
   padding: 12px;
   border-radius: 6px;
   font-size: 13px;
@@ -285,20 +286,23 @@ Why BEM? Makes the code scalable and maintainable
 /* ===== LOGIN BUTTON: Submit Button ===== */
 .loginButton {
   padding: 14px;
-  background: linear-gradient(135deg, var(--accent) 0%, #8a1fcc 100%);
+  background: linear-gradient(135deg, #666666 0%, #999999 100%);
+  background: linear-gradient(135deg, var(--accent, #666666) 0%, var(--accent-bg, #999999) 100%);
   color: white;
-  border: none;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .loginButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(170, 59, 255, 0.4);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .loginButton:active:not(:disabled) {

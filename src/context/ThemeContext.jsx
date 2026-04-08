@@ -116,8 +116,11 @@ const themes = {
 };
 
 export function ThemeProvider({ children }) {
-  const [currentTheme, setCurrentTheme] = useState('dark');
-  const [themeData, setThemeData] = useState(themes.dark);
+  // Determine initial theme synchronously (before render)
+  const getInitialTheme = () => {
+    const savedTheme = localStorage.getItem('appTheme');
+    return (savedTheme && themes[savedTheme]) ? savedTheme : 'corporateGray';
+  };
 
   const applyTheme = (theme) => {
     const root = document.documentElement;
@@ -128,20 +131,23 @@ export function ThemeProvider({ children }) {
     root.style.setProperty('--text', theme.text);
     root.style.setProperty('--border', theme.border);
     root.style.setProperty('--bg', theme.bg);
+    
+    // Apply background directly to body for immediate visibility
+    document.body.style.background = theme.bg;
+    document.body.style.color = theme.text;
   };
 
-  // Load theme from localStorage on mount
+  const initialTheme = getInitialTheme();
+  // Apply theme immediately before state initialization
+  applyTheme(themes[initialTheme]);
+  
+  const [currentTheme, setCurrentTheme] = useState(initialTheme);
+  const [themeData, setThemeData] = useState(themes[initialTheme]);
+
+  // Ensure theme is applied on theme changes
   useEffect(() => {
-    const savedTheme = localStorage.getItem('appTheme');
-    if (savedTheme && themes[savedTheme]) {
-      setCurrentTheme(savedTheme);
-      setThemeData(themes[savedTheme]);
-      applyTheme(themes[savedTheme]);
-    } else {
-      // Apply default dark theme on first load
-      applyTheme(themes.dark);
-    }
-  }, []);
+    applyTheme(themes[currentTheme]);
+  }, [currentTheme]);
 
   const changeTheme = (themeName) => {
     if (themes[themeName]) {
