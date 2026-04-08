@@ -188,7 +188,8 @@ function PermissionManagement() {
               </button>
             </div>
 
-            <form className="userForm" onSubmit={handleSubmit}>
+            <div className="modalBody">
+              <form className="userForm" onSubmit={handleSubmit}>
               <div className="formGroup">
                 <label className="formLabel">Permission Code (e.g., user.view)</label>
                 <input
@@ -278,6 +279,7 @@ function PermissionManagement() {
                 </button>
               </div>
             </form>
+            </div>
           </div>
         </div>
       )}

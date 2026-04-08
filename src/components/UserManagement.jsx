@@ -182,7 +182,8 @@ function UserManagement() {
               </button>
             </div>
 
-            <form className="userForm" onSubmit={handleSubmit}>
+            <div className="modalBody">
+              <form className="userForm" onSubmit={handleSubmit}>
               <div className="formGroup">
                 <label className="formLabel">Name</label>
                 <input
@@ -245,6 +246,7 @@ function UserManagement() {
                 </button>
               </div>
             </form>
+            </div>
           </div>
         </div>
       )}

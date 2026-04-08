@@ -155,7 +155,46 @@
 /* Modal Content Scroll */
 .modalContentScroll {
   max-height: 80vh;
+}
+
+/* Modal Body - Scrollable Content Area */
+.modalBody {
+  flex: 1;
   overflow-y: auto;
+  padding: 0 30px 30px 30px;
+}
+
+/* Flex container for modal */
+.modalContent {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Modal Header Padding */
+.modalContent > .modalHeader {
+  padding: 30px 30px 0 30px;
+  flex-shrink: 0;
+}
+
+/* Modal Content Scrollbar */
+.modalBody::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+  background: rgba(0, 212, 255, 0.05);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00d4ff 0%, #00b8cc 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 212, 255, 0.2);
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00e8ff 0%, #00d4ff 100%);
 }
 
 /* Permission Count Cell */

@@ -185,7 +185,7 @@ function RoleManagement() {
 
       {showAddModal && (
         <div className="modalOverlay">
-          <div className="modalContent modalContentScroll" onClick={(e) => e.stopPropagation()}>
+          <div className="modalContent" onClick={(e) => e.stopPropagation()}>
             <div className="modalHeader">
               <h2 className="modalTitle">
                 {editingId ? 'Edit Role & Permissions' : 'Add New Role'}
@@ -200,7 +200,8 @@ function RoleManagement() {
               </button>
             </div>
 
-            <form className="userForm" onSubmit={handleSubmit}>
+            <div className="modalBody">
+              <form className="userForm" onSubmit={handleSubmit}>
               <div className="formGroup">
                 <label className="formLabel">Role Name</label>
                 <input
@@ -278,6 +279,7 @@ function RoleManagement() {
                 </button>
               </div>
             </form>
+            </div>
           </div>
         </div>
       )}
