@@ -21,27 +21,70 @@ function UserManagement() {
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    phone: '',
+    employeeId: '',
+    department: 'Development',
+    dateOfBirth: '',
+    address: '',
     role: 'User',
-    status: 'Active'
+    status: 'Active',
+    profileImage: null,
+    profileImagePreview: '',
+    idDocument: null,
+    idDocumentName: '',
+    passportDocument: null,
+    passportDocumentName: ''
   });
   const [editingId, setEditingId] = useState(null);
   const [deleteConfirmModal, setDeleteConfirmModal] = useState({ show: false, userId: null, userName: '' });
 
+  const resetFormData = () => ({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    employeeId: '',
+    department: 'Development',
+    dateOfBirth: '',
+    address: '',
+    role: 'User',
+    status: 'Active',
+    profileImage: null,
+    profileImagePreview: '',
+    idDocument: null,
+    idDocumentName: '',
+    passportDocument: null,
+    passportDocumentName: ''
+  });
+
   const handleAddClick = () => {
     setEditingId(null);
-    setFormData({ name: '', email: '', role: 'User', status: 'Active' });
+    setFormData(resetFormData());
     setShowAddModal(true);
   };
 
   const handleEditClick = (user) => {
     setEditingId(user.id);
     setFormData({
-      name: user.name,
+      firstName: user.firstName || '',
+      lastName: user.lastName || '',
       email: user.email,
+      phone: user.phone || '',
+      employeeId: user.employeeId || '',
+      department: user.department || 'Development',
+      dateOfBirth: user.dateOfBirth || '',
+      address: user.address || '',
       role: user.role,
-      status: user.status
+      status: user.status,
+      profileImage: null,
+      profileImagePreview: user.profileImagePreview || '',
+      idDocument: null,
+      idDocumentName: user.idDocumentName || '',
+      passportDocument: null,
+      passportDocumentName: user.passportDocumentName || ''
     });
     setShowAddModal(true);
   };
@@ -65,11 +108,41 @@ function UserManagement() {
   };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    const { name, value, type, files } = e.target;
+    
+    if (type === 'file') {
+      const file = files[0];
+      if (file) {
+        if (name === 'profileImage') {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            setFormData(prev => ({
+              ...prev,
+              profileImage: file,
+              profileImagePreview: reader.result
+            }));
+          };
+          reader.readAsDataURL(file);
+        } else if (name === 'idDocument') {
+          setFormData(prev => ({
+            ...prev,
+            idDocument: file,
+            idDocumentName: file.name
+          }));
+        } else if (name === 'passportDocument') {
+          setFormData(prev => ({
+            ...prev,
+            passportDocument: file,
+            passportDocumentName: file.name
+          }));
+        }
+      }
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -79,26 +152,55 @@ function UserManagement() {
       // Edit existing user
       setUsers(users.map(user =>
         user.id === editingId
-          ? { ...user, ...formData }
+          ? { 
+              ...user, 
+              firstName: formData.firstName,
+              lastName: formData.lastName,
+              email: formData.email,
+              phone: formData.phone,
+              employeeId: formData.employeeId,
+              department: formData.department,
+              dateOfBirth: formData.dateOfBirth,
+              address: formData.address,
+              name: `${formData.firstName} ${formData.lastName}`,
+              role: formData.role,
+              status: formData.status,
+              profileImagePreview: formData.profileImagePreview || user.profileImagePreview,
+              idDocumentName: formData.idDocumentName || user.idDocumentName,
+              passportDocumentName: formData.passportDocumentName || user.passportDocumentName
+            }
           : user
       ));
     } else {
       // Add new user
       const newUser = {
         id: Math.max(...users.map(u => u.id), 0) + 1,
-        ...formData,
-        joinDate: new Date().toISOString().split('T')[0]
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone,
+        employeeId: formData.employeeId,
+        department: formData.department,
+        dateOfBirth: formData.dateOfBirth,
+        address: formData.address,
+        role: formData.role,
+        status: formData.status,
+        joinDate: new Date().toISOString().split('T')[0],
+        profileImagePreview: formData.profileImagePreview,
+        idDocumentName: formData.idDocumentName,
+        passportDocumentName: formData.passportDocumentName
       };
       setUsers([...users, newUser]);
     }
     
     setShowAddModal(false);
-    setFormData({ name: '', email: '', role: 'User', status: 'Active' });
+    setFormData(resetFormData());
   };
 
   const handleCancel = () => {
     setShowAddModal(false);
-    setFormData({ name: '', email: '', role: 'User', status: 'Active' });
+    setFormData(resetFormData());
     setEditingId(null);
   };
 
@@ -123,9 +225,9 @@ function UserManagement() {
               <th className="userTableCell">ID</th>
               <th className="userTableCell">Name</th>
               <th className="userTableCell">Email</th>
+              <th className="userTableCell">Department</th>
               <th className="userTableCell">Role</th>
               <th className="userTableCell">Status</th>
-              <th className="userTableCell">Join Date</th>
               <th className="userTableCell">Actions</th>
             </tr>
           </thead>
@@ -135,13 +237,13 @@ function UserManagement() {
                 <td className="userTableCell">{user.id}</td>
                 <td className="userTableCell userNameCell">{user.name}</td>
                 <td className="userTableCell">{user.email}</td>
+                <td className="userTableCell">{user.department || 'N/A'}</td>
                 <td className="userTableCell">
                   <span className={`roleBadge roleBadge${user.role}`}>{user.role}</span>
                 </td>
                 <td className="userTableCell">
                   <span className={`statusBadge statusBadge${user.status}`}>{user.status}</span>
                 </td>
-                <td className="userTableCell">{user.joinDate}</td>
                 <td className="userTableCell userActionsCell">
                   <button 
                     className="actionButton editButton"
@@ -184,68 +286,211 @@ function UserManagement() {
 
             <div className="modalBody">
               <form className="userForm" onSubmit={handleSubmit}>
-              <div className="formGroup">
-                <label className="formLabel">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  className="formInput"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Enter user name"
-                  required
-                />
-              </div>
+                {/* First Name */}
+                <div className="formGroup">
+                  <label className="formLabel">First Name</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    className="formInput"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    placeholder="Enter first name"
+                    required
+                  />
+                </div>
 
-              <div className="formGroup">
-                <label className="formLabel">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  className="formInput"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Enter user email"
-                  required
-                />
-              </div>
+                {/* Last Name */}
+                <div className="formGroup">
+                  <label className="formLabel">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    className="formInput"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    placeholder="Enter last name"
+                    required
+                  />
+                </div>
 
-              <div className="formGroup">
-                <label className="formLabel">Role</label>
-                <select
-                  name="role"
-                  className="formInput"
-                  value={formData.role}
-                  onChange={handleInputChange}
-                >
-                  <option value="User">User</option>
-                  <option value="Manager">Manager</option>
-                  <option value="Admin">Admin</option>
-                </select>
-              </div>
+                {/* Email */}
+                <div className="formGroup">
+                  <label className="formLabel">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    className="formInput"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Enter email"
+                    required
+                  />
+                </div>
 
-              <div className="formGroup">
-                <label className="formLabel">Status</label>
-                <select
-                  name="status"
-                  className="formInput"
-                  value={formData.status}
-                  onChange={handleInputChange}
-                >
-                  <option value="Active">Active</option>
-                  <option value="Inactive">Inactive</option>
-                </select>
-              </div>
+                {/* Phone */}
+                <div className="formGroup">
+                  <label className="formLabel">Phone</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    className="formInput"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="Enter phone number"
+                  />
+                </div>
 
-              <div className="formActions">
-                <button type="submit" className="submitButton">
-                  {editingId ? 'Update User' : 'Add User'}
-                </button>
-                <button type="button" className="cancelButton" onClick={handleCancel}>
-                  Cancel
-                </button>
-              </div>
-            </form>
+                {/* Employee ID */}
+                <div className="formGroup">
+                  <label className="formLabel">Employee ID</label>
+                  <input
+                    type="text"
+                    name="employeeId"
+                    className="formInput"
+                    value={formData.employeeId}
+                    onChange={handleInputChange}
+                    placeholder="Enter employee ID"
+                    required
+                  />
+                </div>
+
+                {/* Department */}
+                <div className="formGroup">
+                  <label className="formLabel">Department</label>
+                  <select
+                    name="department"
+                    className="formInput"
+                    value={formData.department}
+                    onChange={handleInputChange}
+                  >
+                    <option value="Development">Development</option>
+                    <option value="HR">HR</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Operations">Operations</option>
+                  </select>
+                </div>
+
+                {/* Date of Birth */}
+                <div className="formGroup">
+                  <label className="formLabel">Date of Birth</label>
+                  <input
+                    type="date"
+                    name="dateOfBirth"
+                    className="formInput"
+                    value={formData.dateOfBirth}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                {/* Role */}
+                <div className="formGroup">
+                  <label className="formLabel">Role</label>
+                  <select
+                    name="role"
+                    className="formInput"
+                    value={formData.role}
+                    onChange={handleInputChange}
+                  >
+                    <option value="User">User</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Admin">Admin</option>
+                  </select>
+                </div>
+
+                {/* Status */}
+                <div className="formGroup">
+                  <label className="formLabel">Status</label>
+                  <select
+                    name="status"
+                    className="formInput"
+                    value={formData.status}
+                    onChange={handleInputChange}
+                  >
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </div>
+
+                {/* Address - Full Width */}
+                <div className="formGroup formFullWidth">
+                  <label className="formLabel">Address</label>
+                  <input
+                    type="text"
+                    name="address"
+                    className="formInput"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    placeholder="Enter complete address"
+                  />
+                </div>
+
+                {/* Profile Image - Full Width */}
+                <div className="fileUploadGroup formFullWidth">
+                  <label className="fileUploadLabel">Profile Image</label>
+                  <input
+                    type="file"
+                    name="profileImage"
+                    className="fileUploadInput"
+                    onChange={handleInputChange}
+                    accept="image/*"
+                    title="Upload profile image"
+                  />
+                  {formData.profileImagePreview && (
+                    <div className="fileUploadPreview">
+                      ✓ Profile image selected
+                    </div>
+                  )}
+                </div>
+
+                {/* ID Document - Full Width */}
+                <div className="fileUploadGroup formFullWidth">
+                  <label className="fileUploadLabel">ID Document (PDF/JPG)</label>
+                  <input
+                    type="file"
+                    name="idDocument"
+                    className="fileUploadInput"
+                    onChange={handleInputChange}
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    title="Upload ID document"
+                  />
+                  {formData.idDocumentName && (
+                    <div className="fileUploadPreview">
+                      ✓ {formData.idDocumentName}
+                    </div>
+                  )}
+                </div>
+
+                {/* Passport Document - Full Width */}
+                <div className="fileUploadGroup formFullWidth">
+                  <label className="fileUploadLabel">Passport Document (PDF/JPG)</label>
+                  <input
+                    type="file"
+                    name="passportDocument"
+                    className="fileUploadInput"
+                    onChange={handleInputChange}
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    title="Upload passport document"
+                  />
+                  {formData.passportDocumentName && (
+                    <div className="fileUploadPreview">
+                      ✓ {formData.passportDocumentName}
+                    </div>
+                  )}
+                </div>
+
+                {/* Form Actions */}
+                <div className="formActions">
+                  <button type="submit" className="submitButton">
+                    {editingId ? 'Update User' : 'Add User'}
+                  </button>
+                  <button type="button" className="cancelButton" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
